@@ -1,0 +1,142 @@
+.sideDrawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 40%;
+  background-color: white;
+  border-right: double black 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 10;
+  .active-class {
+    font-weight: 900;
+  }
+}
+.sideDrawerLink {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 2.2rem;
+  color: black;
+
+  border-bottom: 0.4rem rgb(212, 211, 211) double;
+  height: 7%;
+  width: 70%;
+  &:hover {
+    font-weight: 900;
+  }
+  .active-class {
+    font-weight: bold;
+  }
+}
+
+.logoutSideDraw {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 2.2rem;
+  color: black;
+
+  border-bottom: 0.4rem rgb(212, 211, 211) double;
+  height: 10%;
+  width: 70%;
+  cursor: pointer;
+  &:hover {
+    font-weight: 900;
+  }
+}
+.sideDrawerButton {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+
+  background-color: #fff;
+  border-radius: 0.5rem;
+  width: 5rem;
+  height: 5rem;
+  opacity: 0.8;
+  cursor: pointer;
+  display: none;
+  .bars {
+    margin: 0;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    height: 3rem;
+    width: 3rem;
+  }
+}
+.sideDrawerClose {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+
+  .close {
+    font-size: 3rem;
+    color: black;
+  }
+}
+.sideDrawerImg {
+  height: min-content;
+  width: min-content;
+}
+
+@media (max-width: 2000px) {
+  .sideDrawer {
+    width: 35%;
+  }
+}
+@media (max-width: 992px) {
+  .sideDrawer {
+    width: 55%;
+  }
+  .sideDrawerLink {
+    font-size: 4rem;
+    height: 5%;
+  }
+  .logoutSideDraw {
+    font-size: 4rem;
+    height: 5%;
+  }
+
+  .sideDrawerButton {
+    display: block;
+  }
+}
+@media (max-width: 600px) {
+  .sideDrawer {
+    width: 70%;
+  }
+}
+
+.my-node-enter {
+  opacity: 0;
+}
+.my-node-enter-active {
+  opacity: 1;
+  transition: opacity 500ms;
+}
+
+.my-node-exit {
+  opacity: 1;
+}
+.my-node-exit-active {
+  opacity: 0;
+  transition: opacity 400ms;
+}
+.my-node-exit-done {
+  display: none;
+}

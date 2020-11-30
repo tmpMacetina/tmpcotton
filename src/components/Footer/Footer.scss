@@ -1,0 +1,68 @@
+.footer {
+  grid-column: page-start/page-end;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  padding: 2.5rem;
+  border-top: double 1.5rem black;
+  font-size: 1.5rem;
+}
+.footer-img {
+  height: 18rem;
+  width: 18rem;
+}
+
+.social {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+  .facebook {
+    height: 4rem;
+    width: 4rem;
+    margin: 0.5rem;
+    color: blue;
+    &:hover {
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+  }
+  .twitter {
+    height: 4rem;
+    width: 4rem;
+    margin: 0.5rem;
+    color: rgba(105, 192, 233, 0.932);
+    &:hover {
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+  }
+  .instagram {
+    height: 4rem;
+    width: 4rem;
+    margin: 0.5rem;
+    color: rgb(219, 61, 185);
+    &:hover {
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+  }
+}
+@media (max-width: 600px) {
+  .footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .footer-img {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 10rem;
+    width: 11rem;
+  }
+}

@@ -1,0 +1,92 @@
+.signup-form {
+  grid-column: content-start/content-end;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+.signup-text {
+  width: 100%;
+  margin-bottom: 3rem;
+  border-bottom: black double 1.5rem;
+  text-transform: uppercase;
+  font-size: 4rem;
+  text-align: center;
+}
+.form-item {
+  display: flex;
+  flex-direction: column;
+  width: 27rem;
+  margin-top: 2rem;
+}
+.signup-input {
+  height: 5rem;
+  width: 27rem;
+  border: none;
+  border-bottom: solid black 0.1rem;
+  outline: none;
+  font-size: 2rem;
+}
+.input-title {
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+.error-text {
+  color: red;
+  text-align: right;
+}
+.phone-start {
+  height: 5rem;
+  width: 7rem;
+  margin-top: 1rem;
+  border: none;
+  border-bottom: solid black 0.1rem;
+  outline: none;
+  font-size: 2rem;
+}
+.phone-end {
+  height: 5rem;
+  width: 20rem;
+  margin-top: 1rem;
+  border: none;
+  border-bottom: solid black 0.1rem;
+  outline: none;
+  font-size: 2rem;
+}
+
+.country-selector {
+  height: 5rem;
+  width: 27rem;
+  margin-top: 0.8rem;
+  border: double 0.2rem;
+  border-radius: 0.5rem;
+  font-family: inherit;
+  font-size: 2rem;
+}
+.signup-button {
+  width: 27rem;
+  height: 5rem;
+  margin: 2rem;
+  border: double black 0.8rem;
+  cursor: pointer;
+  font-size: 2rem;
+  &:disabled {
+    cursor: not-allowed;
+    background-color: rgb(150, 150, 150);
+  }
+  &:active {
+    transform: translateY(0.3rem);
+  }
+}
+.signup-error {
+  color: red;
+  font-weight: bold;
+  font-size: 2rem;
+}
+.to-login {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  color: black;
+}

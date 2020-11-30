@@ -1,0 +1,65 @@
+.forhim {
+  padding: 3rem;
+  margin: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  height: min-content;
+  grid-column: content-start/content-end;
+}
+.forhim-quote {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem;
+}
+.forhim-quote-img {
+  height: 25rem;
+  width: 20rem;
+}
+.forhim-quote-text {
+  font-size: 2rem;
+  width: 70%;
+  padding: 4rem;
+}
+.forhim-quote-text-name {
+  font-size: 1.8rem;
+  font-style: italic;
+  text-align: right;
+  margin: 1rem;
+}
+.selects {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-around;
+  align-content: center;
+}
+@media (max-width: 1025px) {
+}
+@media (max-width: 992px) {
+  .select-all {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+  }
+}
+// 600px
+@media (max-width: 700px) {
+  .forhim {
+    padding: 1rem;
+    margin: 1rem;
+  }
+  .forhim-quote-text {
+    width: 100%;
+    padding: 2rem;
+  }
+  // .forhim-quote-img {
+  //   display: none;
+  // }
+}

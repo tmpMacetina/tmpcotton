@@ -1,0 +1,160 @@
+.modal {
+  background-color: white;
+  border: 0.8rem black double;
+  border-radius: 0.5rem;
+  width: 70%;
+  height: 80%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 6;
+  display: flex;
+  justify-content: space-around;
+}
+.modal-added {
+  margin-top: 5rem;
+  font-size: 2rem;
+  color: rgb(61, 61, 61);
+}
+.modalImgContainer {
+  p {
+    text-align: center;
+    font-size: 2.5rem;
+  }
+  position: relative;
+  width: 40%;
+}
+.modalImg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+}
+
+.modalInfo {
+  border-left: double rgb(15, 15, 15) 0.4rem;
+  padding: 1rem;
+  position: relative;
+  top: 5%;
+  height: 90%;
+
+  display: flex;
+  flex-direction: column;
+  font-size: 2rem;
+}
+.modalClose {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.modalButtons {
+  .modalCloseButton {
+    position: absolute;
+    bottom: 2rem;
+    right: 1rem;
+    border: double 1rem black;
+    background-color: rgb(248, 136, 136);
+    font-size: 2rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    &:active {
+      transform: translateY(0.2rem);
+    }
+  }
+  .modalAddToCartButton {
+    position: absolute;
+    bottom: 2rem;
+    right: 10rem;
+    border: double 1rem black;
+
+    font-size: 2rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    &:active {
+      transform: translateY(0.2rem);
+    }
+  }
+}
+
+@media (max-width: 2000px) {
+  .modal {
+    height: 75%;
+    width: 80%;
+  }
+}
+@media (max-width: 1025px) {
+  .modalImg {
+    width: 80%;
+    height: 45%;
+  }
+}
+@media (max-width: 992px) {
+  .modalImg {
+    width: 80%;
+    height: 55%;
+  }
+}
+@media (max-width: 650px) {
+  .modalImg {
+    width: 70%;
+    height: 40%;
+  }
+}
+@media (max-width: 550px) {
+  .modal {
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    height: 70%;
+  }
+  .modalImgContainer {
+    height: 50rem;
+    width: 100%;
+  }
+  .modalInfo {
+    border-top: 0.5rem double rgb(194, 192, 192);
+    border-left: none;
+    width: 80%;
+    align-self: center;
+  }
+  .modalImg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 80%;
+    width: 50%;
+  }
+}
+@media (max-width: 350px) {
+  .modal {
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    height: 70%;
+  }
+  .modalImgContainer {
+    height: 35rem;
+    width: 100%;
+  }
+  .modalInfo {
+    border-top: 0.5rem double rgb(194, 192, 192);
+    border-left: none;
+    width: 80%;
+    align-self: center;
+  }
+  .modalImg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 80%;
+    width: 50%;
+  }
+}

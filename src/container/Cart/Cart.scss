@@ -1,0 +1,41 @@
+.cart {
+  grid-column: content-start/content-end;
+  grid-row: content-start/content-end;
+  display: flex;
+  flex-direction: column;
+  min-height: 70vh;
+  margin: 3rem;
+}
+.cart-text {
+  width: 100%;
+  border-bottom: double 1rem black;
+  text-align: center;
+  font-size: 4rem;
+}
+.cart-orderbutton {
+  align-self: flex-end;
+  height: 5rem;
+  width: 20rem;
+  margin-top: 1rem;
+  border: double black 1rem;
+  text-align: center;
+  font-size: 2rem;
+  cursor: pointer;
+  &:disabled {
+    cursor: not-allowed;
+    background-color: rgb(150, 150, 150);
+  }
+  &:active {
+    transform: translateY(0.2rem);
+  }
+}
+.cart-require {
+  align-self: flex-end;
+  color: red;
+}
+.cart-total {
+  align-self: flex-end;
+  height: 5rem;
+  width: 20rem;
+  font-size: 2rem;
+}

@@ -1,0 +1,9 @@
+.page {
+  display: grid;
+  grid-template-columns://vw replaces with % cos vw ignores sidebar
+    [page-start] 5%
+    [content-start]90%
+    [content-end] 5%
+    [page-end];
+  margin: 0;
+}

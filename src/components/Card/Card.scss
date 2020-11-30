@@ -1,0 +1,91 @@
+.fullcard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card {
+  position: relative;
+  height: 27rem;
+  width: 23rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  border: 0.8rem black double;
+  cursor: pointer;
+  transition: 0.8s;
+  &:hover {
+    .price {
+      transform: scale(1.12);
+    }
+    -webkit-box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.75);
+  }
+}
+.card-name {
+  font-size: 2.2rem;
+}
+.card-price {
+  position: absolute;
+  bottom: 0.2rem;
+  right: 0.3rem;
+  font-size: 3rem;
+  transform: scale(1);
+  transition: all 0.4s ease-in-out;
+}
+.card-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+  height: 75%;
+  overflow: hidden;
+}
+
+.card-button {
+  position: relative;
+  width: 23rem;
+  height: 5rem;
+  border: double 0.8rem black;
+  border-radius: 0.3rem;
+  background-color: #ffffff;
+  color: black;
+  font-family: inherit;
+  font-size: 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+  &:active {
+    transform: translateY(0.3rem);
+  }
+  .shopingcart-icon {
+    position: absolute;
+    top: 50%;
+    margin: 0;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+}
+.fullcard:hover {
+  .card-button {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+// @media (max-width: 992px) {
+//   .card {
+//     margin: 1rem;
+//   }
+// }
+@media (max-width: 600px) {
+  .card-button {
+    visibility: visible;
+    opacity: 1;
+  }
+}
