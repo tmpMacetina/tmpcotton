@@ -6,7 +6,8 @@ import {
   ADD_QUANTITY,
   CLEAR_CART,
   SET_CLOTHES,
-  FETCH_CLOTHES_ERR
+  FETCH_CLOTHES_ERR,
+  ORDER
 } from "./actionTypes/actionTypes";
 
 // add cart action
@@ -58,11 +59,16 @@ export const fetchClothesErr = () => {
     type: FETCH_CLOTHES_ERR
   };
 };
+export const order = () => {
+  return {
+    type: ORDER
+  };
+};
 // async get items from firebase,set them or handles error
 export const initItems = () => {
   return dispatch => {
     axios
-      .get("https://")
+      .get("https://api.jsonbin.io/b/5fefd15e14be547060189183/2") // "https://api.jsonbin.io/b/5fefd15e14be547060189183"
       .then(response => {
         dispatch(setClothes(response.data));
       })

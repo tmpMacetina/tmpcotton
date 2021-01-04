@@ -14,27 +14,17 @@ body {
   font-weight: 400;
 }
 
-// @media (min-width: 576px) {
-//   html {
-//     font-size: 37.5%;
-//   }
-// }
-
+@media (min-width: 1920px) {
+  html {
+    font-size: 77.5%;
+  }
+}
 @media (min-width: 2049px) {
   html {
     font-size: 100%;
   }
 }
-@media (max-width: 2048px) {
-  html {
-    font-size: 75%;
-  }
-}
-@media (max-width: 1280px) {
-  html {
-    font-size: 75%;
-  }
-}
+
 @media (max-width: 992px) {
   html {
     font-size: 50%;

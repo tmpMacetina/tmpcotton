@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
-
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/cartActions";
@@ -9,7 +8,7 @@ import Notification from "../../UI elements/Notification/Notification";
 import quoteImage from "../../assets/forHerNew.png";
 import Card from "../../components/Card/Card";
 import "./ForHer.scss";
-
+// similar to allproducts
 class ForHer extends Component {
   state = {
     modal: {
@@ -35,10 +34,14 @@ class ForHer extends Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
+    if (this.props.items.length === 0) this.props.initItems();
   }
 
   render() {
-    const allItems = this.props.items.items;
+    let allItems = [];
+    if (this.props.items.items) {
+      allItems = this.props.items.items;
+    }
     const allFemale = allItems.filter(item => item.gender === "F");
 
     const filteredItemsPrice = allFemale.filter(item => {
@@ -168,7 +171,7 @@ class ForHer extends Component {
       );
     });
     return (
-      <div className="forher fade animated">
+      <div className="forher ">
         {this.state.modal.showModal ? (
           <Modal
             toggle={() => closeModal()}
@@ -188,7 +191,7 @@ class ForHer extends Component {
           <Notification msg={this.state.notification.notificationMsg} />
         ) : null}
 
-        <div className="forher-quote">
+        <div className="forher-quote animated-her fade-in-left">
           <img src={quoteImage} alt="forerimg" className="forher-quote-img" />
           <div className="forher-quote-text">
             <p>
@@ -201,7 +204,8 @@ class ForHer extends Component {
             </p>
           </div>
         </div>
-        <div className="selects">
+
+        <div className="selects animated-small-delay-her appear">
           <select
             onChange={e => setColorFilter(e.target.value)}
             className="select-general"
@@ -249,19 +253,26 @@ class ForHer extends Component {
             <option value="45,100">45+ &euro; </option>
           </select>
         </div>
-        {toShowProducts}
+        <div className="fetch-error">
+          {this.props.error ? <h1>Unknow Netowork error</h1> : null}
+        </div>
+        <div className="forher-container animated-big-delay-her appear">
+          {toShowProducts}
+        </div>
       </div>
     );
   }
 }
 const mapStateToProps = state => {
   return {
-    items: state.cart.items
+    items: state.cart.items,
+    error: state.cart.error
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    onAddToCartButton: id => dispatch(actions.addToCart(id))
+    onAddToCartButton: id => dispatch(actions.addToCart(id)),
+    initItems: () => dispatch(actions.initItems())
   };
 };
 

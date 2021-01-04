@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
-
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/cartActions";
@@ -8,7 +7,7 @@ import "./BestSelling.scss";
 import Modal from "../../UI elements/Modal/Modal";
 import Notification from "../../UI elements/Notification/Notification";
 import Card from "../../components/Card/Card";
-
+// best selling items shown on homepage
 class BestSelling extends Component {
   state = {
     modal: {
@@ -27,7 +26,9 @@ class BestSelling extends Component {
     }
   };
 
-  notiRef = React.createRef(null);
+  componentDidMount() {
+    if (this.props.items.length === 0) this.props.initItems();
+  }
 
   render() {
     const openModal = props => {
@@ -94,11 +95,15 @@ class BestSelling extends Component {
     const handleAddToCart = id => {
       this.props.onAddToCartButton(id);
     };
-    const allItems = this.props.items.items;
+
+    let allItems = [];
+    if (this.props.items.items) allItems = this.props.items.items;
+
+    // filters best 4
     const best = allItems.filter(item => item.bestSelling === true);
     const bestFour = best.slice(0, 4);
 
-    const bestItems = bestFour.map(item => {
+    const bestItemsToShow = bestFour.map(item => {
       return (
         <Card
           key={item.id}
@@ -113,8 +118,18 @@ class BestSelling extends Component {
         />
       );
     });
+
+    let toShow = null;
+    if (this.props.loading) {
+      toShow = <div className="loader">Loading...</div>;
+    } else {
+      toShow = bestItemsToShow;
+    }
+    if (this.props.error) {
+      toShow = <div className="fetch-error">Unknown network error</div>;
+    }
     return (
-      <div className="bestSelling fade animated">
+      <div className="bestSelling appear animated-small-delay">
         {this.state.modal.showModal ? (
           <Modal
             toggle={() => closeModal()}
@@ -135,20 +150,25 @@ class BestSelling extends Component {
         ) : null}
 
         <div className="bestSellingText"> BEST SELLING</div>
-        {bestItems}
+        {toShow}
       </div>
     );
   }
 }
 const mapStateToProps = state => {
   return {
-    items: state.cart.items
+    items: state.cart.items,
+    loading: state.cart.loading,
+    error: state.cart.error
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    onAddToCartButton: id => dispatch(actions.addToCart(id))
+    onAddToCartButton: id => dispatch(actions.addToCart(id)),
+    initItems: () => dispatch(actions.initItems())
   };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BestSelling);
+
+// order successful page,add to redux cart maybe,spinner for log too

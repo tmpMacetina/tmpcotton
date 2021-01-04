@@ -3,13 +3,11 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 65vh;
-  min-height: 40rem;
+  min-height: 45rem;
   width: 100%;
   padding: 1rem;
 }
 .lady-img {
-  position: relative;
   height: 45rem;
 }
 .cotton-img {
@@ -28,7 +26,7 @@
 }
 .homeheader-text-quote {
   margin-bottom: 1rem;
-  font-size: 4rem;
+  font-size: 3.5rem;
   text-align: center;
 }
 .homeheader-button {
@@ -40,6 +38,7 @@
   font-size: 2.5rem;
   text-align: center;
   cursor: pointer;
+  transition: 0.8s;
   &:hover {
     -webkit-box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.75);
@@ -50,27 +49,16 @@ a:hover {
   text-decoration: none;
   font-weight: 400;
 }
-@media (max-width: 1280px) {
-  .cotton-img {
-    display: none;
-  }
-}
-// @media (min-height: 1081px) and (max-width: 1081px) {
-//   .homeheader {
-//     height: 40vh;
-//   }
-// }
-// fix for big screens
-
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
   .homeheader {
-    height: 50vh;
+    min-height: 40rem;
     justify-content: space-around;
     margin-bottom: 0;
+    overflow: hidden;
   }
   .lady-img {
     top: 5%;
-    height: 50rem;
+    height: 40rem;
   }
   .cotton-img {
     display: none;
@@ -85,31 +73,27 @@ a:hover {
 }
 @media (max-width: 576px) {
   .homeheader {
-    height: 25vh;
+    min-height: 33rem;
     width: 100%;
     justify-content: center;
-    padding: 0.5rem;
+    padding: 1rem;
   }
   .lady-img {
     top: 5%;
-    height: 28rem;
+    height: 33rem;
   }
   .cotton-img {
     display: none;
   }
   .homeheader-text {
     top: 0;
-    width: 24rem;
-    font-size: 3rem;
+    width: 20rem;
+    font-size: 2.5rem;
+    margin-right: 1rem;
   }
   .homeheader-button {
-    font-size: 1.4rem;
-    width: 25rem;
-  }
-}
-@media (min-width: 2000px) and (min-height: 1200px) {
-  .cotton-img {
-    display: none;
+    font-size: 1.2rem;
+    width: 22rem;
   }
 }
 
@@ -117,19 +101,25 @@ a:hover {
 .animated {
   -webkit-animation-duration: 2s;
   animation-duration: 2s;
-  -webkit-animation-delay: 1s;
-  animation-delay: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
-.animatedBtn {
+.animated-small-delay {
   -webkit-animation-duration: 3s;
   animation-duration: 3s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
+.animated-big-delay {
+  -webkit-animation-duration: 3s;
+  animation-duration: 3s;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
 
-@-webkit-keyframes fadeInLeft {
+@-webkit-keyframes fade-in-left {
   0% {
     opacity: 0;
     -webkit-transform: translateX(-3rem);
@@ -140,7 +130,7 @@ a:hover {
   }
 }
 
-@keyframes fadeInLeft {
+@keyframes fade-in-left {
   0% {
     opacity: 0;
     transform: translateX(-20px);
@@ -150,8 +140,30 @@ a:hover {
     transform: translateX(0);
   }
 }
+@-webkit-keyframes appear {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-3rem);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
+}
 
-.fadeInLeft {
-  -webkit-animation-name: fadeInLeft;
-  animation-name: fadeInLeft;
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.appear {
+  -webkit-animation-name: appear;
+  animation-name: appear;
+}
+.fade-in-left {
+  -webkit-animation-name: fade-in-left;
+  animation-name: fade-in-left;
 }

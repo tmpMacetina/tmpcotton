@@ -4,6 +4,7 @@ export const REMOVE_ITEM = "REMOVE_ITEM";
 export const SUB_QUANTITY = "SUB_QUANTITY";
 export const ADD_QUANTITY = "ADD_QUANTITY";
 export const CLEAR_CART = "CLEAR_CART";
+export const ORDER = "ORDER";
 
 export const SET_CLOTHES = "SET_CLOTHES";
 export const INIT_CLOTHES = "INIT_CLOTHES";

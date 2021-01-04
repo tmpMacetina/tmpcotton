@@ -1,6 +1,4 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/prop-types */
-/* eslint-disable react/no-access-state-in-setstate */
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
@@ -26,7 +24,9 @@ class SideDrawer extends Component {
     };
 
     const toggleSideDrawer = () => {
-      this.setState({ showSideDrawer: !this.state.showSideDrawer });
+      this.setState(prevState => ({
+        showSideDrawer: !prevState.showSideDrawer
+      }));
     };
 
     return ReactDOM.createPortal(
@@ -55,6 +55,8 @@ class SideDrawer extends Component {
                 className="sideDrawerClose"
                 onClick={toggleSideDrawer}
                 onKeyDown={toggleSideDrawer}
+                role="link"
+                tabIndex={0}
               >
                 <FaTimes className="close" />
               </div>
@@ -85,13 +87,17 @@ class SideDrawer extends Component {
                 For her
               </NavLink>
               {this.props.userId || this.props.token ? (
-                <div
-                  className="logoutSideDraw"
-                  onClick={handleLogOut}
-                  onKeyDown={handleLogOut}
+                <NavLink
+                  onClick={() => {
+                    toggleSideDrawer();
+                    handleLogOut();
+                  }}
+                  activeClassName="active-class"
+                  className="sideDrawerLink"
+                  to="/cotton"
                 >
                   Log out
-                </div>
+                </NavLink>
               ) : (
                 <NavLink
                   onClick={toggleSideDrawer}

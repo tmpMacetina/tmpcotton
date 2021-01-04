@@ -47,7 +47,7 @@ export const checkAuthTimeout = expirationTime => {
 
 export const authLogIn = (email, password) => {
   return dispatch => {
-    dispatch(authStart()); /// try to remove and see if it works
+    dispatch(authStart());
     const authData = {
       email,
       password,

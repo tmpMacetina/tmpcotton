@@ -3,6 +3,12 @@
   flex-direction: column;
   align-items: center;
 }
+.fullcard:hover {
+  .card-button {
+    visibility: visible;
+    opacity: 1;
+  }
+}
 .card {
   position: relative;
   height: 27rem;
@@ -48,8 +54,8 @@
 
 .card-button {
   position: relative;
-  width: 23rem;
   height: 5rem;
+  width: 23rem;
   border: double 0.8rem black;
   border-radius: 0.3rem;
   background-color: #ffffff;
@@ -72,17 +78,7 @@
     transform: translateY(-50%);
   }
 }
-.fullcard:hover {
-  .card-button {
-    visibility: visible;
-    opacity: 1;
-  }
-}
-// @media (max-width: 992px) {
-//   .card {
-//     margin: 1rem;
-//   }
-// }
+
 @media (max-width: 600px) {
   .card-button {
     visibility: visible;

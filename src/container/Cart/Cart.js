@@ -12,6 +12,7 @@ class Cart extends Component {
   render() {
     const handleOnSubmit = () => {
       this.props.onCleanCart();
+      this.props.order();
       this.props.history.push(`/ordersuccess`);
     };
     const handleAddQuantity = id => {
@@ -42,7 +43,7 @@ class Cart extends Component {
     const enableButton = !!(this.props.addedItems.length > 0 && loggedIn);
 
     return (
-      <div className="cart">
+      <div className="cart animated appear">
         <div className="cart-text">CART:</div>
         {itemsToAdd}
         <div className="cart-total">TOTAL:{this.props.total} &euro;</div>
@@ -79,7 +80,8 @@ const mapDispatchToProps = dispatch => {
     onRemoveFromCart: id => dispatch(actions.removeItem(id)),
     onSubFromCart: id => dispatch(actions.subtractQuantity(id)),
     onAddFromCart: id => dispatch(actions.addQuantity(id)),
-    onCleanCart: () => dispatch(actions.clearCart())
+    onCleanCart: () => dispatch(actions.clearCart()),
+    order: () => dispatch(actions.order())
   };
 };
 

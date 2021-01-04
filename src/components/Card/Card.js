@@ -1,15 +1,19 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import PropTypes from "prop-types";
 import "./Card.scss";
-
+// presentational card component for an item
 const Card = props => {
   const { onclick, name, price, image, addToCart } = props;
   return (
     <div className="fullcard">
-      <div className="card" onClick={onclick}>
+      <div
+        className="card"
+        onClick={onclick}
+        onKeyDown={onclick}
+        role="button"
+        tabIndex={0}
+      >
         <div className="card-name">{name}</div>
         <div className="card-price">{price}&euro;</div>
         <img src={image} className="card-img" alt="cardy" />

@@ -6,11 +6,12 @@
   margin-top: 1rem;
 }
 .container {
-  border: 0.8rem double black;
   height: 30rem;
   width: 42rem;
   margin-bottom: 2rem;
+  border: 0.8rem double black;
   border-radius: 0.2rem;
+  transition: 0.8s;
   .floating-text {
     font-weight: 400;
     font-size: 4rem;
@@ -43,8 +44,30 @@
   font-size: 4rem;
   text-align: center;
 }
+//animations
 
-@-webkit-keyframes fadeInLeft {
+.animated {
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.animated-small-delay {
+  -webkit-animation-duration: 3s;
+  animation-duration: 3s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.animated-big-delay {
+  -webkit-animation-duration: 3s;
+  animation-duration: 3s;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fade-in-left {
   0% {
     opacity: 0;
     -webkit-transform: translateX(-3rem);
@@ -55,23 +78,45 @@
   }
 }
 
-@keyframes fadeInLeft {
+@keyframes fade-in-left {
   0% {
     opacity: 0;
-    transform: translateX(-3rem);
+    transform: translateX(-20px);
   }
   100% {
     opacity: 1;
     transform: translateX(0);
   }
 }
-
-.fadeInLeft {
-  -webkit-animation-name: fadeInLeft;
-  animation-name: fadeInLeft;
+@-webkit-keyframes appear {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-3rem);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
 }
 
-@-webkit-keyframes fadeInRight {
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.appear {
+  -webkit-animation-name: appear;
+  animation-name: appear;
+}
+.fade-in-left {
+  -webkit-animation-name: fade-in-left;
+  animation-name: fade-in-left;
+}
+
+@-webkit-keyframes fade-in-right {
   0% {
     opacity: 0;
     -webkit-transform: translateX(3rem);
@@ -82,7 +127,7 @@
   }
 }
 
-@keyframes fadeInRight {
+@keyframes fade-in-right {
   0% {
     opacity: 0;
     transform: translateX(3rem);
@@ -93,22 +138,7 @@
   }
 }
 
-.fadeInRight {
-  -webkit-animation-name: fadeInRight;
-  animation-name: fadeInRight;
-}
-
-.animated {
-  -webkit-animation-duration: 2s;
-  animation-duration: 2s;
-  -webkit-animation-delay: 1s;
-  animation-delay: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-.animatedBtn {
-  -webkit-animation-duration: 3s;
-  animation-duration: 3s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
+.fade-in-right {
+  -webkit-animation-name: fade-in-right;
+  animation-name: fade-in-right;
 }

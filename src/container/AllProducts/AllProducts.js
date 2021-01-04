@@ -7,7 +7,7 @@ import Modal from "../../UI elements/Modal/Modal";
 import Notification from "../../UI elements/Notification/Notification";
 import Card from "../../components/Card/Card";
 import "./AllProducts.scss";
-
+// page with all products
 class AllProducts extends Component {
   state = {
     modal: {
@@ -31,13 +31,18 @@ class AllProducts extends Component {
     }
   };
 
+  // if items are not initialized does it,scrolls too top of page too
   componentDidMount() {
     window.scrollTo(0, 0);
+    if (this.props.items.length === 0) this.props.initItems();
   }
 
   render() {
-    const allItems = this.props.items.items;
+    // when items init ,set allItems to init items from Redux
+    let allItems = [];
+    if (this.props.items.items) allItems = this.props.items.items;
 
+    // applying filters
     const filteredItemsPrice = allItems.filter(item => {
       const low = this.state.filters.priceRange.split(",")[0];
       const high = this.state.filters.priceRange.split(",")[1];
@@ -53,6 +58,7 @@ class AllProducts extends Component {
       if (this.state.filters.color === item.color) return true;
       return false;
     });
+    // opens modal
     const openModal = props => {
       this.setState({
         modal: {
@@ -71,6 +77,7 @@ class AllProducts extends Component {
     const closeModal = () => {
       this.setState({ modal: { showModal: false } });
     };
+    // shows message inside the modal when item is added to the cart
     const showModalMsg = () => {
       this.setState(prevState => ({
         ...prevState,
@@ -80,6 +87,7 @@ class AllProducts extends Component {
         }
       }));
     };
+    // closes it
     const closeModalMsg = () => {
       this.setState(prevState => ({
         ...prevState,
@@ -89,10 +97,12 @@ class AllProducts extends Component {
         }
       }));
     };
+    // shows and removes message inside modal when item is added to the cart
     const handleModalMsg = () => {
       showModalMsg();
       setTimeout(closeModalMsg, 1000);
     };
+    // shows notification
     const openNoti = msg => {
       this.setState({
         notification: {
@@ -101,12 +111,26 @@ class AllProducts extends Component {
         }
       });
     };
+    // closes notification
     const closeNoti = () => {
       this.setState({ notification: { showNotification: false } });
     };
+    // shows and closes notification after 1 sec
+    const notify = msg => {
+      if (this.state.notification.showNotification === false) {
+        openNoti(msg);
+        setTimeout(() => closeNoti(), 1000);
+      } else
+        setTimeout(() => {
+          openNoti(msg);
+          setTimeout(() => closeNoti(), 1000);
+        }, 1000);
+    };
+    // add to cart (from Redux)
     const handleAddToCart = id => {
       this.props.onAddToCartButton(id);
     };
+    // filter setters
     const setColorFilter = value => {
       this.setState(prevState => ({
         ...prevState,
@@ -134,16 +158,7 @@ class AllProducts extends Component {
         }
       }));
     };
-    const notify = msg => {
-      if (this.state.notification.showNotification === false) {
-        openNoti(msg);
-        setTimeout(() => closeNoti(), 1000);
-      } else
-        setTimeout(() => {
-          openNoti(msg);
-          setTimeout(() => closeNoti(), 1000);
-        }, 1000);
-    };
+    // puts items into cards
     const toShowProducts = filteredItems.map(item => {
       return (
         <Card
@@ -160,7 +175,7 @@ class AllProducts extends Component {
       );
     });
     return (
-      <div className="allproducts fade animated">
+      <div className="allproducts ">
         {this.state.modal.showModal ? (
           <Modal
             toggle={() => closeModal()}
@@ -180,7 +195,7 @@ class AllProducts extends Component {
           <Notification msg={this.state.notification.notificationMsg} />
         ) : null}
 
-        <div className="select-all">
+        <div className="selects animated-small-delay-all  appear">
           <select
             onChange={e => setColorFilter(e.target.value)}
             className="select-general"
@@ -230,19 +245,26 @@ class AllProducts extends Component {
             <option value="45,100">45+ &euro; </option>
           </select>
         </div>
-        {toShowProducts}
+        <div className="fetch-error">
+          {this.props.error ? <h1>Unknow Netowork error</h1> : null}
+        </div>
+        <div className="allproducts-container animated-big-delay-all appear">
+          {toShowProducts}
+        </div>
       </div>
     );
   }
 }
 const mapStateToProps = state => {
   return {
-    items: state.cart.items
+    items: state.cart.items,
+    error: state.cart.error
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    onAddToCartButton: id => dispatch(actions.addToCart(id))
+    onAddToCartButton: id => dispatch(actions.addToCart(id)),
+    initItems: () => dispatch(actions.initItems())
   };
 };
 

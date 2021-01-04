@@ -66,8 +66,8 @@
   font-size: 2rem;
 }
 .signup-button {
-  width: 27rem;
   height: 5rem;
+  width: 27rem;
   margin: 2rem;
   border: double black 0.8rem;
   cursor: pointer;
@@ -81,12 +81,82 @@
   }
 }
 .signup-error {
-  color: red;
   font-weight: bold;
   font-size: 2rem;
+  color: red;
 }
 .to-login {
   margin-top: 1rem;
   font-size: 1.5rem;
   color: black;
+}
+// animation
+.animated {
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.animated-small-delay {
+  -webkit-animation-duration: 3s;
+  animation-duration: 3s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.animated-big-delay {
+  -webkit-animation-duration: 3s;
+  animation-duration: 3s;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fade-in-left {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-3rem);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
+}
+
+@keyframes fade-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@-webkit-keyframes appear {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-3rem);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.appear {
+  -webkit-animation-name: appear;
+  animation-name: appear;
+}
+.fade-in-left {
+  -webkit-animation-name: fade-in-left;
+  animation-name: fade-in-left;
 }

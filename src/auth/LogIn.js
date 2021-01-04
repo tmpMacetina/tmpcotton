@@ -5,6 +5,9 @@ import "./LogIn.scss";
 import { NavLink, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../store/actions/authActions";
+// Firebase Authentcation is used to simulate authentication
+// https://firebase.google.com/docs/reference/rest/auth for more info
+//
 
 class LogIn extends Component {
   state = {
@@ -22,7 +25,7 @@ class LogIn extends Component {
 
   render() {
     const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,3})+$/;
-
+    // email validation using regex
     const validateEmail = () => {
       if (emailRegex.test(this.state.email.value))
         this.setState(prevState => ({
@@ -41,7 +44,7 @@ class LogIn extends Component {
           }
         }));
     };
-
+    // handles email input, calls validation too
     const handleChangeEmail = event => {
       const targetValue = event.target.value;
 
@@ -57,6 +60,7 @@ class LogIn extends Component {
         () => validateEmail()
       );
     };
+    // validates password,just if it is >=8 chars
     const validatePassword = () => {
       if (this.state.password.value.length >= 8)
         this.setState(prevState => ({
@@ -75,7 +79,7 @@ class LogIn extends Component {
           }
         }));
     };
-
+    // handles password input ,calls validationion too
     const handleChangePassword = event => {
       const targetValue = event.target.value;
 
@@ -91,18 +95,19 @@ class LogIn extends Component {
         () => validatePassword()
       );
     };
-
+    // prevent page refresh on submit
     const handleSubmit = event => {
       event.preventDefault();
     };
+    // handle login (from Redux!)
     const handleLogin = (email, password) => {
       this.props.onLogIn(email, password);
     };
-
+    // enables button if all info is valid
     const buttonEnable = this.state.password.valid && this.state.email.valid;
 
     return (
-      <form className="login-form" onSubmit={handleSubmit}>
+      <form className="login-form animated appear" onSubmit={handleSubmit}>
         <div className="login-text">Log In</div>
         <div className="form-item">
           <p className="input-title">E-mail:</p>
@@ -152,12 +157,13 @@ class LogIn extends Component {
         {this.props.error ? (
           <div className="login-error">Invalid e-mail or password</div>
         ) : null}
+        {/* on successful login,redirect to home page */}
         {this.props.token && this.props.userId ? <Redirect to="/" /> : null}
       </form>
     );
   }
 }
-
+// get data from redux
 const mapStateToProps = state => {
   return {
     token: state.auth.token,

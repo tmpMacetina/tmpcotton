@@ -14,7 +14,7 @@ import AllProducts from "../container/AllProducts/AllProducts";
 import Cart from "../container/Cart/Cart";
 import LogIn from "../auth/LogIn";
 import SignUp from "../auth/SignUp";
-import OrderSuccess from "../components/OrderSuccess/OrderSuccess";
+import OrderSuccess from "../container/OrderSuccess/OrderSuccess";
 import * as actions from "../store/actions/authActions";
 import ErrorPage from "./ErrorPage";
 import "./Page.scss";
@@ -60,13 +60,14 @@ class Page extends Component {
     return (
       <div className="page">
         <Header
-          auth={this.props.token || this.props.userId}
+          auth={!!(this.props.token || this.props.userId)}
           logOutHandler={handleLogOut}
         />
         <SideDrawer />
 
         <Switch>
           <Route path="/" exact component={Home} />
+          <Route path="/cotton" exact component={Home} />
           <Route path="/forher" exact component={ForHer} />
           <Route path="/forhim" exact component={ForHim} />
           <Route path="/login" exact component={LogIn} />

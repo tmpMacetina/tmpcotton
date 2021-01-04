@@ -1,8 +1,8 @@
 import React from "react";
-import "./Footer.scss";
 import { FaFacebook, FaTwitter, FaInstagramSquare } from "react-icons/fa";
 import Logo from "../../assets/Logo/Logo.png";
-
+import "./Footer.scss";
+// presentational footer component
 const Footer = () => {
   return (
     <div className="footer">

@@ -10,7 +10,6 @@ const initialState = {
   userId: null,
   error: null,
   loading: false
-  // authRedirectPath: '/'
 };
 const authReducer = (state = initialState, action) => {
   if (action.type === AUTH_START) {

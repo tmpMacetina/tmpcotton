@@ -1,17 +1,9 @@
-/* eslint-disable react/prefer-stateless-function */
-import React, { Component } from "react";
+import React from "react";
+import Page from "./page/Page";
 import "./App.scss";
 
-import Page from "./page/Page";
-
-export class App extends Component {
-  render() {
-    return (
-      <div>
-        <Page />
-      </div>
-    );
-  }
-}
+const App = () => {
+  return <Page />;
+};
 
 export default App;

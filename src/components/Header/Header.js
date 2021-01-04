@@ -1,13 +1,12 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-
 import React from "react";
 import "./Header.scss";
 import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import Logo from "../../assets/Logo/Logo.png";
-
+// presentational header component that contains navigation, log in/log out changes based on auth
 const Header = props => {
   const { auth, logOutHandler } = props;
   return (
@@ -48,6 +47,9 @@ const Header = props => {
 export default Header;
 
 Header.propTypes = {
-  auth: PropTypes.bool.isRequired,
+  auth: PropTypes.bool,
   logOutHandler: PropTypes.func.isRequired
+};
+Header.defaultProps = {
+  auth: "false"
 };

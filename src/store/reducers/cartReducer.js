@@ -5,16 +5,19 @@ import {
   ADD_QUANTITY,
   CLEAR_CART,
   SET_CLOTHES,
-  FETCH_CLOTHES_ERR
+  FETCH_CLOTHES_ERR,
+  ORDER
 } from "../actions/actionTypes/actionTypes";
 import tmpItems from "../../assets/tmpData.json";
 
 const initState = {
-  items: tmpItems,
+  localItems: tmpItems,
+  items: [],
   addedItems: [],
   total: 0,
   loading: true,
-  error: false
+  error: false,
+  ordered: false
 };
 const cartReducer = (state = initState, action) => {
   if (action.type === ADD_TO_CART) {
@@ -104,6 +107,12 @@ const cartReducer = (state = initState, action) => {
       ...state,
       addedItems: [],
       total: 0
+    };
+  }
+  if (action.type === ORDER) {
+    return {
+      ...state,
+      ordered: true
     };
   }
   return state;

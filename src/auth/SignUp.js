@@ -44,6 +44,7 @@ class SignUp extends Component {
     const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     const phoneRegex = /^[0-9]+$/;
     const nameRegex = /^[a-z ,.'-]+$/;
+    // validates name
     const validateName = () => {
       if (
         this.state.name.value.length > 7 &&
@@ -65,6 +66,7 @@ class SignUp extends Component {
           }
         }));
     };
+    // handles name input,calls verification too
     const handleChangeName = event => {
       const targetValue = event.target.value;
       this.setState(
@@ -81,6 +83,7 @@ class SignUp extends Component {
         }
       );
     };
+    // email validation using regex
     const validateEmail = () => {
       if (emailRegex.test(this.state.email.value))
         this.setState(prevState => ({
@@ -99,7 +102,7 @@ class SignUp extends Component {
           }
         }));
     };
-
+    // handles email input, calls validation too
     const handleChangeEmail = event => {
       const targetValue = event.target.value;
 
@@ -115,7 +118,7 @@ class SignUp extends Component {
         () => validateEmail()
       );
     };
-
+    // validates password repeat,if it is same as password
     const validatePasswordRepeat = () => {
       if (this.state.password.value === this.state.passwordRepeat.value)
         this.setState(prevState => ({
@@ -134,7 +137,7 @@ class SignUp extends Component {
           }
         }));
     };
-
+    // validates password,just if it is >=8 chars
     const validatePassword = () => {
       if (this.state.password.value.length >= 8)
         this.setState(prevState => ({
@@ -153,7 +156,7 @@ class SignUp extends Component {
           }
         }));
     };
-
+    // handles password repeat input ,calls validationion too
     const handleChangePasswordRepeated = event => {
       const targetValue = event.target.value;
 
@@ -169,6 +172,7 @@ class SignUp extends Component {
         () => validatePasswordRepeat()
       );
     };
+    // handles password input ,calls validationion too
     const handleChangePassword = event => {
       const targetValue = event.target.value;
 
@@ -187,10 +191,7 @@ class SignUp extends Component {
         }
       );
     };
-
-    const handleSubmit = event => {
-      event.preventDefault();
-    };
+    //  handles country select
     const handleChangeCountry = event => {
       const targetValue = event.target.value;
       const code = Countries.find(obj => {
@@ -198,7 +199,7 @@ class SignUp extends Component {
       }).dial_code;
       this.setState({ country: { value: targetValue, code } });
     };
-
+    // validates phone
     const validatePhone = () => {
       if (
         phoneRegex.test(this.state.phone.value) &&
@@ -220,7 +221,7 @@ class SignUp extends Component {
           }
         }));
     };
-
+    // handles phone change
     const handleChangePhone = event => {
       const targetValue = event.target.value;
       this.setState(
@@ -237,7 +238,21 @@ class SignUp extends Component {
         }
       );
     };
-
+    // options for country select
+    const selectCountryOptions = Countries.map(country => (
+      <option key={country.code} value={country.name}>
+        {country.name}
+      </option>
+    ));
+    // prevent page refresh on submit
+    const handleSubmit = event => {
+      event.preventDefault();
+    };
+    // handle sign up (from Redux!)
+    const handleSignUp = (email, password) => {
+      this.props.onSignUp(email, password);
+    };
+    // enables button if all info is valid
     const buttonEnable =
       this.state.password.valid &&
       this.state.email.valid &&
@@ -245,18 +260,8 @@ class SignUp extends Component {
       this.state.passwordRepeat.valid &&
       this.state.phone.valid;
 
-    const selectCountryOptions = Countries.map(country => (
-      <option key={country.code} value={country.name}>
-        {country.name}
-      </option>
-    ));
-
-    const handleSignUp = (email, password) => {
-      this.props.onSignUp(email, password);
-    };
-
     return (
-      <form className="signup-form" onSubmit={handleSubmit}>
+      <form className="signup-form animated appear" onSubmit={handleSubmit}>
         <div className="signup-text">Sign up</div>
 
         <div className="form-item">
@@ -372,11 +377,13 @@ class SignUp extends Component {
         {this.props.error ? (
           <div className="signup-error">User already exits or data error</div>
         ) : null}
+        {/* on successful login,redirect to home page */}
         {this.props.token && this.props.userId ? <Redirect to="/" /> : null}
       </form>
     );
   }
 }
+// get data from redux
 const mapStateToProps = state => {
   return {
     token: state.auth.token,

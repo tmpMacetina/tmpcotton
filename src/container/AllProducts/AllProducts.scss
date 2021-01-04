@@ -1,15 +1,19 @@
 .allproducts {
-  padding: 3rem;
-  margin: 3rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-
   justify-content: space-around;
   grid-column: content-start/content-end;
-  grid-row: content-start/content-end;
+  padding: 3rem;
+  margin: 3rem;
 }
-.select-all {
+.allproducts-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.selects {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -27,31 +31,95 @@
   margin-top: 2rem;
   margin-bottom: 3rem;
   -moz-appearance: none;
+  background-color: white;
 }
-.my-animation-enter {
-  opacity: 0;
+.fetch-error {
+  margin: 3rem;
+  width: 100%;
+  font-size: 3rem;
+  text-align: center;
 }
-.my-animation-enter-active {
-  opacity: 1;
-  transition: opacity 500ms;
-}
-
-.my-animation-exit {
-  opacity: 1;
-}
-.my-animation-exit-active {
-  opacity: 0;
-  transition: opacity 400ms;
-}
-.my-animation-exit-done {
-  display: none;
-}
-@media (max-width: 992px) {
-  .select-all {
+@media (max-width: 600px) {
+  .allproducts {
+    padding: 0.5rem;
+    margin: 0.5rem;
+  }
+  .selects {
     display: flex;
     flex-direction: column;
 
     justify-content: space-between;
     align-content: center;
   }
+}
+
+// animation
+.animated-all {
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.animated-small-delay-all {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.animated-big-delay-all {
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fade-in-left {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-3rem);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
+}
+
+@keyframes fade-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@-webkit-keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.appear {
+  -webkit-animation-name: appear;
+  animation-name: appear;
+}
+.fade-in-left {
+  -webkit-animation-name: fade-in-left;
+  animation-name: fade-in-left;
 }

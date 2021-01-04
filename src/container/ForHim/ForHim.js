@@ -9,7 +9,7 @@ import Notification from "../../UI elements/Notification/Notification";
 import Card from "../../components/Card/Card";
 import "./ForHim.scss";
 import quoteImage from "../../assets/forHimImage.png";
-
+// similar to allproducts
 class ForHim extends Component {
   state = {
     modal: {
@@ -35,10 +35,14 @@ class ForHim extends Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
+    if (this.props.items.length === 0) this.props.initItems();
   }
 
   render() {
-    const allItems = this.props.items.items;
+    let allItems = [];
+    if (this.props.items.items) {
+      allItems = this.props.items.items;
+    }
     const allMale = allItems.filter(item => item.gender === "M");
     const filteredItemsPrice = allMale.filter(item => {
       const low = this.state.filters.priceRange.split(",")[0];
@@ -166,7 +170,7 @@ class ForHim extends Component {
       );
     });
     return (
-      <div className="forhim fade animated">
+      <div className="forhim ">
         {this.state.modal.showModal ? (
           <Modal
             toggle={() => closeModal()}
@@ -186,8 +190,8 @@ class ForHim extends Component {
           <Notification msg={this.state.notification.notificationMsg} />
         ) : null}
 
-        <div className="forhim-quote">
-          <div className="forhim-quote-text">
+        <div className="forhim-quote animated-him fade-in-left">
+          <div className="forhim-quote-text ">
             <p>
               &quot;The public is more familiar with bad design than good
               design. It is, in effect, conditioned to prefer bad design,
@@ -199,12 +203,12 @@ class ForHim extends Component {
             </p>
           </div>
 
-          <img src={quoteImage} alt="forhimimg" className="forhim-quote-img" />
+          <img src={quoteImage} alt="forhimimg" className="forhim-quote-img " />
         </div>
-        <div className="selects">
+        <div className="selects animated-small-delay-him appear">
           <select
             onChange={e => setColorFilter(e.target.value)}
-            className="select-general"
+            className="select-general "
           >
             <option value="" disabled defaultValue hidden>
               Select Color
@@ -220,7 +224,7 @@ class ForHim extends Component {
           </select>
           <select
             onChange={e => setTypeFilter(e.target.value)}
-            className="select-general"
+            className="select-general "
           >
             <option value="" disabled defaultValue hidden>
               Select type
@@ -233,7 +237,7 @@ class ForHim extends Component {
           </select>
           <select
             onChange={e => setPriceFilter(e.target.value)}
-            className="select-general"
+            className="select-general "
           >
             <option value="0,100" defaultValue hidden>
               Price range
@@ -245,19 +249,26 @@ class ForHim extends Component {
             <option value="45,100">45+ &euro; </option>
           </select>
         </div>
-        {toShowProducts}
+        <div className="fetch-error">
+          {this.props.error ? <h1>Unknow Netowork error</h1> : null}
+        </div>
+        <div className="forhim-container animated-big-delay-him appear">
+          {toShowProducts}
+        </div>
       </div>
     );
   }
 }
 const mapStateToProps = state => {
   return {
-    items: state.cart.items
+    items: state.cart.items,
+    error: state.cart.error
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    onAddToCartButton: id => dispatch(actions.addToCart(id))
+    onAddToCartButton: id => dispatch(actions.addToCart(id)),
+    initItems: () => dispatch(actions.initItems())
   };
 };
 
