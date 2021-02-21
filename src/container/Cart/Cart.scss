@@ -1,111 +1,49 @@
 .cart {
-  grid-column: content-start/content-end;
-  grid-row: content-start/content-end;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  min-height: 70vh;
-  margin: 3rem;
-}
-.cart-text {
-  width: 100%;
-  border-bottom: double 1rem black;
-  text-align: center;
-  font-size: 4rem;
-}
-.cart-orderbutton {
-  align-self: flex-end;
-  height: 5rem;
-  width: 20rem;
-  margin-top: 1rem;
-  border: double black 1rem;
-  text-align: center;
-  font-size: 2rem;
-  cursor: pointer;
-  &:disabled {
-    cursor: not-allowed;
-    background-color: rgb(150, 150, 150);
+  grid-column: content-start/content-end;
+  margin-bottom: 5rem;
+  margin-top: 5rem;
+  min-height: 65vh;
+  .title {
+    border-bottom: double 1.5rem black;
+    font-size: 4rem;
+    text-align: center;
+    width: 100%;
   }
-  &:active {
-    transform: translateY(0.2rem);
+  .order-button {
+    align-self: flex-end;
+    border: double black 1rem;
+    cursor: pointer;
+    font-size: 2rem;
+    height: 5rem;
+    margin-top: 1rem;
+    text-align: center;
+    transition: 0.3s;
+    width: 27rem;
+    &:hover {
+      transform: scale(1.05);
+    }
+    &:disabled {
+      background-color: rgb(151, 151, 151);
+      cursor: not-allowed;
+      transform: scale(1);
+    }
+    &:active {
+      transform: translateY(0.3rem);
+    }
   }
-}
-.cart-require {
-  align-self: flex-end;
-  color: red;
-}
-.cart-total {
-  align-self: flex-end;
-  height: 5rem;
-  width: 20rem;
-  font-size: 2rem;
-}
-// animation
-.animated {
-  -webkit-animation-duration: 2s;
-  animation-duration: 2s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-.animated-small-delay {
-  -webkit-animation-duration: 2s;
-  animation-duration: 2s;
-  -webkit-animation-delay: 1s;
-  animation-delay: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-.animated-big-delay {
-  -webkit-animation-duration: 2s;
-  animation-duration: 2s;
-  -webkit-animation-delay: 1.5s;
-  animation-delay: 1.5s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-
-@-webkit-keyframes fade-in-left {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateX(-3rem);
+  .requirement {
+    align-self: flex-end;
+    color: red;
+    font-size: 1.6rem;
   }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateX(0);
+  .total {
+    align-self: flex-end;
+    font-size: 2rem;
+    height: 5rem;
+    margin-top: 1rem;
+    width: 20rem;
   }
-}
-
-@keyframes fade-in-left {
-  0% {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-@-webkit-keyframes appear {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes appear {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-.appear {
-  -webkit-animation-name: appear;
-  animation-name: appear;
-}
-.fade-in-left {
-  -webkit-animation-name: fade-in-left;
-  animation-name: fade-in-left;
 }

@@ -1,87 +1,119 @@
+// fullcard is card + button below it
 .fullcard {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-.fullcard:hover {
-  .card-button {
-    visibility: visible;
-    opacity: 1;
-  }
-}
-.card {
-  position: relative;
-  height: 27rem;
-  width: 23rem;
-  margin-left: 2rem;
-  margin-right: 2rem;
-  margin-bottom: 1rem;
-  margin-top: 2rem;
-  padding: 0.5rem;
-  border-radius: 0.2rem;
-  border: 0.8rem black double;
-  cursor: pointer;
-  transition: 0.8s;
   &:hover {
-    .price {
-      transform: scale(1.12);
+    .button {
+      -moz-transition: all 0.2s ease-out;
+      -o-transition: all 0.2s ease-out;
+      -webkit-transition: all 0.2s ease-out;
+      opacity: 1;
+      transition: all 0.2s ease-out;
     }
-    -webkit-box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.75);
-    box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.75);
+  }
+  .card {
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    border: 0.8rem black double;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    height: 27rem;
+    margin-bottom: 1rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    position: relative;
+    transition: all 0.3s ease-out;
+    width: 23rem;
+    &:hover {
+      -moz-box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.75);
+      -webkit-box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.75);
+      box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.75);
+    }
+    .name {
+      font-size: 2.2rem;
+    }
+    .price {
+      bottom: 0.2rem;
+      font-size: 3rem;
+      position: absolute;
+      right: 0.3rem;
+    }
+    .card-img {
+      height: 75%;
+      left: 50%;
+      overflow: hidden;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 75%;
+    }
+  }
+  .button {
+    -moz-box-shadow: 0 0 0 rgba(175, 123, 123, 0.3);
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    -webkit-box-shadow: 0 0 0 rgba(175, 123, 123, 0.3);
+    -webkit-transition: all 0.3s ease-out;
+    background-color: #ffffff;
+    border: double 0.8rem black;
+    border-radius: 0.3rem;
+    box-shadow: 0 0 0 rgba(175, 123, 123, 0.3);
+    color: black;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1.8rem;
+    font-weight: 600;
+    height: 5rem;
+    opacity: 0;
+    position: relative;
+    transition: 0.3s ease-out;
+    width: 23rem;
+    &:hover {
+      -moz-box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.75);
+      -webkit-box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.75);
+      box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.75);
+      transform: scale(1.05);
+    }
+    &:active {
+      transform: translateY(0.3rem);
+    }
+    .shopingcart-icon {
+      -ms-transform: translateY(-50%);
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
 }
-.card-name {
-  font-size: 2.2rem;
-}
-.card-price {
-  position: absolute;
-  bottom: 0.2rem;
-  right: 0.3rem;
-  font-size: 3rem;
-  transform: scale(1);
-  transition: all 0.4s ease-in-out;
-}
-.card-img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 75%;
-  height: 75%;
-  overflow: hidden;
-}
-
-.card-button {
-  position: relative;
-  height: 5rem;
-  width: 23rem;
-  border: double 0.8rem black;
-  border-radius: 0.3rem;
-  background-color: #ffffff;
-  color: black;
-  font-family: inherit;
-  font-size: 2rem;
-  font-weight: 600;
-  cursor: pointer;
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.3s ease-out;
-  &:active {
-    transform: translateY(0.3rem);
-  }
-  .shopingcart-icon {
-    position: absolute;
-    top: 50%;
-    margin: 0;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-  }
-}
-
 @media (max-width: 600px) {
-  .card-button {
-    visibility: visible;
-    opacity: 1;
+  .fullcard {
+    .card {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+    .button {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+@media (max-width: 360px) {
+  .fullcard {
+    .card {
+      height: 25rem;
+      margin-bottom: 1rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      margin-top: 1rem;
+      width: 21rem;
+    }
+    .button {
+      width: 21rem;
+    }
   }
 }

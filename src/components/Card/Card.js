@@ -13,12 +13,13 @@ const Card = props => {
         onKeyDown={onclick}
         role="button"
         tabIndex={0}
+        // eslint wins this one
       >
-        <div className="card-name">{name}</div>
-        <div className="card-price">{price}&euro;</div>
+        <div className="name">{name}</div>
+        <div className="price">{price}&euro;</div>
         <img src={image} className="card-img" alt="cardy" />
       </div>
-      <button type="button" className="card-button" onClick={addToCart}>
+      <button type="button" className="button" onClick={addToCart}>
         ADD TO CART &ensp;
         <FaShoppingCart className="shopingcart-icon" />
       </button>

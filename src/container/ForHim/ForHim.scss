@@ -1,151 +1,79 @@
 .forhim {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
   flex-wrap: wrap;
-  height: min-content;
-  padding: 3rem;
-  margin: 3rem;
   grid-column: content-start/content-end;
-}
-.forhim-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
   height: min-content;
-}
-.forhim-quote {
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  width: 100%;
-  padding: 2rem;
-}
-.forhim-quote-img {
-  height: 25rem;
-  width: 20rem;
-}
-.forhim-quote-text {
-  font-size: 2rem;
-  width: 70%;
-  padding: 4rem;
-}
-.forhim-quote-text-name {
-  font-size: 1.8rem;
-  font-style: italic;
-  text-align: right;
-  margin: 1rem;
-}
-.selects {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
   justify-content: space-around;
-  align-content: center;
-}
-.select-general {
-  outline: none;
-  border-radius: 0.2rem;
-  border: double black 0.6rem;
-  font-size: 2rem;
-  height: 5rem;
-  width: 28rem;
-  margin-top: 2rem;
-  margin-bottom: 3rem;
-  -moz-appearance: none;
-  background-color: white;
-}
-.fetch-error {
-  margin: 3rem;
-  width: 100%;
-  font-size: 3rem;
-  text-align: center;
+  padding: 2.5rem;
+  .card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: min-content;
+    justify-content: space-around;
+  }
+  .quote {
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    width: 100%;
+  }
+  .quote-img {
+    height: 25rem;
+    width: 20rem;
+  }
+  .quote-text {
+    font-size: 2rem;
+    padding: 4rem;
+    width: 70%;
+  }
+  .quote-name {
+    font-size: 1.8rem;
+    font-style: italic;
+    margin: 1rem;
+    text-align: right;
+  }
+  .selects {
+    align-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+  }
+  .select {
+    -moz-appearance: none;
+    background-color: white;
+    border: double black 0.6rem;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    font-size: 2rem;
+    height: 5rem;
+    margin-bottom: 3rem;
+    margin-top: 2rem;
+    outline: none;
+    width: 28rem;
+  }
+  .fetch-error {
+    font-size: 3rem;
+    margin: 3rem;
+    text-align: center;
+    width: 100%;
+  }
+  .no_matches {
+    font-size: 3rem;
+    margin: 5rem;
+  }
 }
 @media (max-width: 600px) {
   .forhim {
-    padding: 0.5rem;
     margin: 0.5rem;
+    padding: 0.5rem;
+    .quote-text {
+      padding: 1.5rem;
+      width: 100%;
+    }
   }
-  .forhim-quote-text {
-    width: 100%;
-    padding: 2rem;
-  }
-  .select-all {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-content: center;
-  }
-}
-// animation
-.animated-him {
-  -webkit-animation-duration: 2s;
-  animation-duration: 2s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-.animated-small-delay-him {
-  -webkit-animation-duration: 2s;
-  animation-duration: 2s;
-  -webkit-animation-delay: 0.5s;
-  animation-delay: 0.5s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-.animated-big-delay-him {
-  -webkit-animation-duration: 2s;
-  animation-duration: 2s;
-  -webkit-animation-delay: 1s;
-  animation-delay: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-
-@-webkit-keyframes fade-in-left {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateX(-3rem);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateX(0);
-  }
-}
-
-@keyframes fade-in-left {
-  0% {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-@-webkit-keyframes appear {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes appear {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-.appear {
-  -webkit-animation-name: appear;
-  animation-name: appear;
-}
-.fade-in-left {
-  -webkit-animation-name: fade-in-left;
-  animation-name: fade-in-left;
 }

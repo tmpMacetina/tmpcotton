@@ -67,7 +67,7 @@ class Page extends Component {
 
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/cotton" exact component={Home} />
+          <Route path="/tmpcotton" exact component={Home} />
           <Route path="/forher" exact component={ForHer} />
           <Route path="/forhim" exact component={ForHim} />
           <Route path="/login" exact component={LogIn} />

@@ -6,7 +6,9 @@ import { connect } from "react-redux";
 import * as actions from "../store/actions/authActions";
 import Countries from "../assets/phonesData.json";
 import "./SignUp.scss";
-
+// Firebase Authentcation is used to simulate authentication
+// https://firebase.google.com/docs/reference/rest/auth for more info
+// TODO split into 2 parts,add spinner while waiting for an answer
 class SignUp extends Component {
   state = {
     email: {
@@ -40,11 +42,15 @@ class SignUp extends Component {
     }
   };
 
+  componentDidMount() {
+    this.props.authErrorRemove();
+  }
+
   render() {
     const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     const phoneRegex = /^[0-9]+$/;
     const nameRegex = /^[a-z ,.'-]+$/;
-    // validates name
+
     const validateName = () => {
       if (
         this.state.name.value.length > 7 &&
@@ -66,7 +72,7 @@ class SignUp extends Component {
           }
         }));
     };
-    // handles name input,calls verification too
+
     const handleChangeName = event => {
       const targetValue = event.target.value;
       this.setState(
@@ -83,7 +89,7 @@ class SignUp extends Component {
         }
       );
     };
-    // email validation using regex
+
     const validateEmail = () => {
       if (emailRegex.test(this.state.email.value))
         this.setState(prevState => ({
@@ -102,10 +108,9 @@ class SignUp extends Component {
           }
         }));
     };
-    // handles email input, calls validation too
+
     const handleChangeEmail = event => {
       const targetValue = event.target.value;
-
       this.setState(
         prevState => ({
           ...prevState,
@@ -118,7 +123,7 @@ class SignUp extends Component {
         () => validateEmail()
       );
     };
-    // validates password repeat,if it is same as password
+
     const validatePasswordRepeat = () => {
       if (this.state.password.value === this.state.passwordRepeat.value)
         this.setState(prevState => ({
@@ -137,7 +142,7 @@ class SignUp extends Component {
           }
         }));
     };
-    // validates password,just if it is >=8 chars
+
     const validatePassword = () => {
       if (this.state.password.value.length >= 8)
         this.setState(prevState => ({
@@ -156,10 +161,9 @@ class SignUp extends Component {
           }
         }));
     };
-    // handles password repeat input ,calls validationion too
+
     const handleChangePasswordRepeated = event => {
       const targetValue = event.target.value;
-
       this.setState(
         prevState => ({
           ...prevState,
@@ -172,10 +176,9 @@ class SignUp extends Component {
         () => validatePasswordRepeat()
       );
     };
-    // handles password input ,calls validationion too
+
     const handleChangePassword = event => {
       const targetValue = event.target.value;
-
       this.setState(
         prevState => ({
           ...prevState,
@@ -191,7 +194,7 @@ class SignUp extends Component {
         }
       );
     };
-    //  handles country select
+
     const handleChangeCountry = event => {
       const targetValue = event.target.value;
       const code = Countries.find(obj => {
@@ -199,7 +202,7 @@ class SignUp extends Component {
       }).dial_code;
       this.setState({ country: { value: targetValue, code } });
     };
-    // validates phone
+
     const validatePhone = () => {
       if (
         phoneRegex.test(this.state.phone.value) &&
@@ -221,7 +224,7 @@ class SignUp extends Component {
           }
         }));
     };
-    // handles phone change
+
     const handleChangePhone = event => {
       const targetValue = event.target.value;
       this.setState(
@@ -238,17 +241,17 @@ class SignUp extends Component {
         }
       );
     };
-    // options for country select
+    // options for country selection
     const selectCountryOptions = Countries.map(country => (
       <option key={country.code} value={country.name}>
         {country.name}
       </option>
     ));
-    // prevent page refresh on submit
+
     const handleSubmit = event => {
       event.preventDefault();
     };
-    // handle sign up (from Redux!)
+    // handle sign up (from redux)
     const handleSignUp = (email, password) => {
       this.props.onSignUp(email, password);
     };
@@ -261,107 +264,128 @@ class SignUp extends Component {
       this.state.phone.valid;
 
     return (
-      <form className="signup-form animated appear" onSubmit={handleSubmit}>
-        <div className="signup-text">Sign up</div>
-
+      <form className="signup-form " onSubmit={handleSubmit}>
+        <h1 className="title">Sign up</h1>
         <div className="form-item">
-          <p className="input-title">Name:</p>
-          <input
-            required
-            className="signup-input"
-            type="text"
-            value={this.state.name.value}
-            placeholder="enter full name"
-            onChange={handleChangeName}
-          />
-          <p className="error-text">
-            {!this.state.name.valid && this.state.name.touched
-              ? "Enter valid name"
-              : null}
-          </p>
-        </div>
-        <div className="form-item">
-          <p className="input-title">E-mail:</p>
-          <input
-            className="signup-input"
-            type="email"
-            required
-            value={this.state.email.value}
-            placeholder="example@mail.com"
-            onChange={handleChangeEmail}
-          />
-          <p className="error-text">
-            {!this.state.email.valid && this.state.email.touched
-              ? "Enter valid e-mail"
-              : null}
-          </p>
-        </div>
-        <div className="form-item">
-          <p className="input-title">Password:</p>
-          <input
-            className="signup-input"
-            placeholder="password"
-            type="password"
-            value={this.state.password.value}
-            required
-            onChange={handleChangePassword}
-          />
-          <p className="error-text">
-            {!this.state.password.valid && this.state.password.touched
-              ? "Must have 8 characters"
-              : null}
-          </p>
-        </div>
-        <div className="form-item">
-          <p className="input-title">Repeat password:</p>
-          <input
-            className="signup-input"
-            placeholder="repeat password"
-            type="password"
-            required
-            value={this.state.passwordRepeat.value}
-            onChange={handleChangePasswordRepeated}
-          />
-          <p className="error-text">
-            {!this.state.passwordRepeat.valid &&
-            this.state.passwordRepeat.touched
-              ? "Passwords do not match"
-              : null}
-          </p>
-        </div>
-
-        <div className="form-item">
-          <p className="input-title">Choose your country:</p>
-          <select onChange={handleChangeCountry} className="country-selector">
-            {selectCountryOptions}
-          </select>
-        </div>
-        <div className="form-item">
-          <p className="input-title">Phone number:</p>
-          <div className="phone">
+          <label htmlFor="name" className="input-title">
+            Name:
             <input
-              type="text"
-              className="phone-start"
-              value={this.state.country.code}
-              readOnly
-            />
-            <input
-              className="phone-end"
-              type="text"
-              value={this.state.phone.value}
-              placeholder="your phone number"
-              onChange={handleChangePhone}
               required
+              className="signup-input"
+              type="text"
+              id="name"
+              value={this.state.name.value}
+              placeholder="full name"
+              onChange={handleChangeName}
             />
-          </div>
-          <p className="error-text">
-            {!this.state.phone.valid && this.state.phone.touched
-              ? "Enter valid phone number"
-              : null}
-          </p>
+            <p className="input-error-text">
+              {!this.state.name.valid && this.state.name.touched
+                ? "Enter valid name"
+                : null}
+            </p>
+          </label>
         </div>
+        {/* ==========               put label for all                    ======== */}
+        <div className="form-item">
+          <label htmlFor="email" className="input-title">
+            E-mail:
+            <input
+              className="signup-input"
+              type="email"
+              id="email"
+              required
+              value={this.state.email.value}
+              placeholder="example@mail.com"
+              onChange={handleChangeEmail}
+            />
+            <p className="input-error-text">
+              {!this.state.email.valid && this.state.email.touched
+                ? "Enter valid e-mail"
+                : null}
+            </p>
+          </label>
+        </div>
+        <div className="form-item">
+          <label htmlFor="password" className="input-title">
+            Password:
+            <input
+              className="signup-input"
+              placeholder="password"
+              type="password"
+              id="password"
+              value={this.state.password.value}
+              required
+              onChange={handleChangePassword}
+            />
+            <p className="input-error-text">
+              {!this.state.password.valid && this.state.password.touched
+                ? "Must have 8 characters"
+                : null}
+            </p>
+          </label>
+        </div>
+        <div className="form-item">
+          <label htmlFor="rpassword" className="input-title">
+            Repeat password:
+            <input
+              className="signup-input"
+              placeholder="repeat password"
+              type="password"
+              id="rpassword"
+              required
+              value={this.state.passwordRepeat.value}
+              onChange={handleChangePasswordRepeated}
+            />
+            <p className="input-error-text">
+              {!this.state.passwordRepeat.valid &&
+              this.state.passwordRepeat.touched
+                ? "Passwords do not match"
+                : null}
+            </p>
+          </label>
+        </div>
+        <div className="form-item">
+          <label htmlFor="country" className="input-title">
+            Choose your country:
+            <select
+              id="country"
+              onChange={handleChangeCountry}
+              className="country-selector"
+            >
+              {selectCountryOptions}
+            </select>
+          </label>
+        </div>
+        <div className="form-item">
+          <label htmlFor="phone" className="input-title">
+            Phone number:
+            <div className="phone">
+              <input
+                type="text"
+                className="phone-start"
+                value={this.state.country.code}
+                readOnly
+              />
+              <input
+                className="phone-end"
+                type="text"
+                id="phone"
+                value={this.state.phone.value}
+                placeholder="your phone number"
+                onChange={handleChangePhone}
+                required
+              />
+            </div>
+            <p className="input-error-text">
+              {!this.state.phone.valid && this.state.phone.touched
+                ? "Enter valid phone number"
+                : null}
+            </p>
+          </label>
+        </div>
+
         <button
-          type="button"
+          type="submit"
           className="signup-button"
           disabled={!buttonEnable}
           onClick={() =>
@@ -374,11 +398,14 @@ class SignUp extends Component {
         <NavLink className="to-login" to="/login">
           Already have an account? Click here to log in!
         </NavLink>
+
         {this.props.error ? (
           <div className="signup-error">User already exits or data error</div>
         ) : null}
         {/* on successful login,redirect to home page */}
-        {this.props.token && this.props.userId ? <Redirect to="/" /> : null}
+        {this.props.token && this.props.userId ? (
+          <Redirect to="/cotton" />
+        ) : null}
       </form>
     );
   }
@@ -393,7 +420,9 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    onSignUp: (email, password) => dispatch(actions.authSignUp(email, password))
+    onSignUp: (email, password) =>
+      dispatch(actions.authSignUp(email, password)),
+    authErrorRemove: () => dispatch(actions.authErrorRemove())
   };
 };
 

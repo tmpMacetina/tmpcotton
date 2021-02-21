@@ -1,47 +1,81 @@
 .header {
-  grid-column: page-start/page-end;
-  display: flex;
   align-items: center;
-  justify-content: space-between;
-  height: 15vh;
   border-bottom: 1.5rem double;
-  .header-left {
+  display: flex;
+  grid-column: page-start/page-end;
+  height: 16vh;
+  justify-content: space-between;
+  padding: 2.5rem;
+  .left {
     display: flex;
   }
-  .header-right {
+  .right {
     display: flex;
   }
-}
-.logo {
-  height: 100%;
-}
-.logout,
-a {
-  margin: 2.5rem;
-  color: rgb(27, 27, 27);
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 2.2rem;
-  font-weight: 400;
-  cursor: pointer;
-  &:hover {
+  .logo {
+    height: 13vh;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+  }
+  .link {
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    font-size: 2.4rem;
+    font-weight: 500;
+    margin: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.3s;
+    &:hover {
+      color: black;
+      transform: scale(1.05);
+    }
+  }
+  .logout {
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    font-size: 2.4rem;
+    font-weight: 500;
+    margin: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.3s;
+    &:hover {
+      color: black;
+      transform: scale(1.05);
+    }
+  }
+  .toggle-button {
+    display: none;
+  }
+  .active-class {
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
     font-weight: bolder;
+    transform: scale(1.05);
+    transition: 0.3s;
+    &:hover {
+      color: black;
+      font-weight: bolder;
+      transform: scale(1.05);
+    }
   }
 }
-.toggle-button {
-  display: none;
-}
-.active-class {
-  font-weight: bolder;
-}
-
 @media (max-width: 1024px) {
   .header {
     justify-content: center;
-    .header-left {
+    .left {
       display: none;
     }
-    .header-right {
+    .right {
       display: none;
     }
     .toggle-button {
@@ -52,5 +86,8 @@ a {
 @media (max-width: 600px) {
   .header {
     height: 12vh;
+    .logo {
+      height: 10vh;
+    }
   }
 }

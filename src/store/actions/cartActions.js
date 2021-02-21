@@ -44,7 +44,11 @@ export const addQuantity = id => {
     id
   };
 };
-
+export const order = () => {
+  return {
+    type: ORDER
+  };
+};
 // set items when fetched
 export const setClothes = items => {
   return {
@@ -53,18 +57,14 @@ export const setClothes = items => {
     loading: false
   };
 };
-// fatch failed ,show error
+// fatch failed, show error
 export const fetchClothesErr = () => {
   return {
     type: FETCH_CLOTHES_ERR
   };
 };
-export const order = () => {
-  return {
-    type: ORDER
-  };
-};
-// async get items from firebase,set them or handles error
+
+// async get items from firebase, set them or handle error
 export const initItems = () => {
   return dispatch => {
     axios

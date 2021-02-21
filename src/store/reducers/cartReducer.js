@@ -49,14 +49,14 @@ const cartReducer = (state = initState, action) => {
 
     // calculating the total
     const newTotal = state.total - itemToRemove.price * itemToRemove.quantity;
-    // console.log(itemToRemove);
+
     return {
       ...state,
       addedItems: newItems,
       total: newTotal
     };
   }
-  // INSIDE CART COMPONENT
+  // inside cart
   if (action.type === ADD_QUANTITY) {
     const addedItem = state.items.items.find(item => item.id === action.id);
     addedItem.quantity += 1;
@@ -88,20 +88,6 @@ const cartReducer = (state = initState, action) => {
     };
   }
 
-  if (action.type === SET_CLOTHES) {
-    return {
-      ...state,
-      items: action.items,
-      loading: false
-    };
-  }
-  if (action.type === FETCH_CLOTHES_ERR) {
-    return {
-      ...state,
-      error: true
-    };
-  }
-
   if (action.type === CLEAR_CART) {
     return {
       ...state,
@@ -113,6 +99,20 @@ const cartReducer = (state = initState, action) => {
     return {
       ...state,
       ordered: true
+    };
+  }
+  // init items
+  if (action.type === SET_CLOTHES) {
+    return {
+      ...state,
+      items: action.items,
+      loading: false
+    };
+  }
+  if (action.type === FETCH_CLOTHES_ERR) {
+    return {
+      ...state,
+      error: true
     };
   }
   return state;

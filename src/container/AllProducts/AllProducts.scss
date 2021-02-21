@@ -2,124 +2,51 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
   grid-column: content-start/content-end;
-  padding: 3rem;
-  margin: 3rem;
-}
-.allproducts-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   justify-content: space-around;
-}
-.selects {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-  justify-content: space-around;
-  align-content: center;
-}
-.select-general {
-  outline: none;
-  border-radius: 0.2rem;
-  border: double black 0.6rem;
-  font-size: 2rem;
-  height: 5rem;
-  width: 28rem;
-  margin-top: 2rem;
-  margin-bottom: 3rem;
-  -moz-appearance: none;
-  background-color: white;
-}
-.fetch-error {
-  margin: 3rem;
-  width: 100%;
-  font-size: 3rem;
-  text-align: center;
+  padding: 2.5rem;
+  .container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-height: 25rem;
+    justify-content: space-around;
+  }
+  .selects {
+    align-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+  }
+  .select {
+    -moz-appearance: none;
+    background-color: white;
+    border: double black 0.6rem;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    font-size: 2rem;
+    height: 5rem;
+    margin-bottom: 3rem;
+    margin-top: 2rem;
+    outline: none;
+    width: 28rem;
+  }
+  .fetch-error {
+    font-size: 3rem;
+    margin: 3rem;
+    text-align: center;
+    width: 100%;
+  }
+  .no_matches {
+    font-size: 3rem;
+    margin: 5rem;
+  }
 }
 @media (max-width: 600px) {
   .allproducts {
-    padding: 0.5rem;
     margin: 0.5rem;
+    padding: 0.5rem;
   }
-  .selects {
-    display: flex;
-    flex-direction: column;
-
-    justify-content: space-between;
-    align-content: center;
-  }
-}
-
-// animation
-.animated-all {
-  -webkit-animation-duration: 2s;
-  animation-duration: 2s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-.animated-small-delay-all {
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-delay: 0.5s;
-  animation-delay: 0.5s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-.animated-big-delay-all {
-  -webkit-animation-duration: 2s;
-  animation-duration: 2s;
-  -webkit-animation-delay: 1s;
-  animation-delay: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-
-@-webkit-keyframes fade-in-left {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateX(-3rem);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateX(0);
-  }
-}
-
-@keyframes fade-in-left {
-  0% {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-@-webkit-keyframes appear {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes appear {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-.appear {
-  -webkit-animation-name: appear;
-  animation-name: appear;
-}
-.fade-in-left {
-  -webkit-animation-name: fade-in-left;
-  animation-name: fade-in-left;
 }

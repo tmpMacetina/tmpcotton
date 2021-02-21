@@ -3,10 +3,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/cartActions";
-import "./BestSelling.scss";
 import Modal from "../../UI elements/Modal/Modal";
 import Notification from "../../UI elements/Notification/Notification";
 import Card from "../../components/Card/Card";
+import "./BestSelling.scss";
+import "../../styles/Spinner.scss";
+
 // best selling items shown on homepage
 class BestSelling extends Component {
   state = {
@@ -69,7 +71,7 @@ class BestSelling extends Component {
     };
     const handleModalMsg = () => {
       showModalMsg();
-      setTimeout(closeModalMsg, 1000);
+      setTimeout(closeModalMsg, 1200);
     };
     const openNoti = msg => {
       this.setState({
@@ -85,11 +87,11 @@ class BestSelling extends Component {
     const notify = msg => {
       if (this.state.notification.showNotification === false) {
         openNoti(msg);
-        setTimeout(() => closeNoti(), 1000);
+        setTimeout(() => closeNoti(), 1200);
       } else
         setTimeout(() => {
           openNoti(msg);
-          setTimeout(() => closeNoti(), 1000);
+          setTimeout(() => closeNoti(), 1200);
         }, 1000);
     };
     const handleAddToCart = id => {
@@ -119,17 +121,8 @@ class BestSelling extends Component {
       );
     });
 
-    let toShow = null;
-    if (this.props.loading) {
-      toShow = <div className="loader">Loading...</div>;
-    } else {
-      toShow = bestItemsToShow;
-    }
-    if (this.props.error) {
-      toShow = <div className="fetch-error">Unknown network error</div>;
-    }
     return (
-      <div className="bestSelling appear animated-small-delay">
+      <div className="bestselling">
         {this.state.modal.showModal ? (
           <Modal
             toggle={() => closeModal()}
@@ -149,8 +142,13 @@ class BestSelling extends Component {
           <Notification msg={this.state.notification.notificationMsg} />
         ) : null}
 
-        <div className="bestSellingText"> BEST SELLING</div>
-        {toShow}
+        <div className="title"> BEST SELLING</div>
+        <div className="container animated appear">
+          {this.props.error ? (
+            <div className="fetch-error">Unknown network error</div>
+          ) : null}
+          {this.props.loading ? <div className="loader" /> : bestItemsToShow}
+        </div>
       </div>
     );
   }
@@ -170,5 +168,3 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BestSelling);
-
-// order successful page,add to redux cart maybe,spinner for log too

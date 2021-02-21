@@ -4,7 +4,8 @@ import {
   AUTH_START,
   AUTH_SUCCESS,
   AUTH_FAIL,
-  AUTH_LOGOUT
+  AUTH_LOGOUT,
+  AUTH_ERROR_REMOVE
 } from "./actionTypes/actionTypes";
 
 export const authStart = () => {
@@ -27,6 +28,11 @@ export const authFail = error => {
     error
   };
 };
+export const authErrorRemove = () => {
+  return {
+    type: AUTH_ERROR_REMOVE
+  };
+};
 
 export const logout = () => {
   localStorage.removeItem("token");
@@ -36,7 +42,7 @@ export const logout = () => {
     type: AUTH_LOGOUT
   };
 };
-
+// check token expiration time
 export const checkAuthTimeout = expirationTime => {
   return dispatch => {
     setTimeout(() => {
@@ -44,7 +50,7 @@ export const checkAuthTimeout = expirationTime => {
     }, expirationTime * 1000);
   };
 };
-
+// attempt to log in
 export const authLogIn = (email, password) => {
   return dispatch => {
     dispatch(authStart());
@@ -73,6 +79,7 @@ export const authLogIn = (email, password) => {
       });
   };
 };
+// attempt to sign up
 export const authSignUp = (email, password) => {
   return dispatch => {
     dispatch(authStart());
@@ -101,7 +108,7 @@ export const authSignUp = (email, password) => {
       });
   };
 };
-
+// checks for token, sets state accordingly
 export const authCheckState = () => {
   return dispatch => {
     const token = localStorage.getItem("token");

@@ -6,12 +6,16 @@ import "./Footer.scss";
 const Footer = () => {
   return (
     <div className="footer">
-      <div>
-        <h1>About us:</h1>&#32;COTTON is one of the largest international
-        fashion companies. It belongs to Itex, one of the world’s largest
-        distribution groups. The customer is at the heart of our unique business
-        model, which includes design, production, distribution and sales of 100%
-        cotton products through our extensive retail network.&#32;
+      <div className="about">
+        <h1 className="about-title">About us:</h1>
+        <p>
+          &#32;COTTON is one of the largest international fashion companies. It
+          belongs to Itex, one of the world’s largest distribution groups. The
+          customer is at the heart of our unique business model, which includes
+          design, production, distribution and sales of 100% cotton products
+          through our extensive retail network.We use organic cotton from our
+          cotton farms that follow highest standards. &#32;
+        </p>
         <div className="social">
           <a
             href="https://www.facebook.com"
@@ -37,8 +41,9 @@ const Footer = () => {
           <p>Follow us !</p>
         </div>
       </div>
-
-      <img className="footer-img" src={Logo} alt="logo" />
+      <div className="footer-logo">
+        <img className="logo-img" src={Logo} alt="logo" />
+      </div>
     </div>
   );
 };

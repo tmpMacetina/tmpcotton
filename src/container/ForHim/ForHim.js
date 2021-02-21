@@ -1,15 +1,17 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
-
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/cartActions";
 import Modal from "../../UI elements/Modal/Modal";
 import Notification from "../../UI elements/Notification/Notification";
 import Card from "../../components/Card/Card";
-import "./ForHim.scss";
 import quoteImage from "../../assets/forHimImage.png";
-// similar to allproducts
+import "./ForHim.scss";
+import "../../styles/Spinner.scss";
+import "../../styles/Animations.scss";
+
+// check allproducts for more info
 class ForHim extends Component {
   state = {
     modal: {
@@ -190,25 +192,23 @@ class ForHim extends Component {
           <Notification msg={this.state.notification.notificationMsg} />
         ) : null}
 
-        <div className="forhim-quote animated-him fade-in-left">
-          <div className="forhim-quote-text ">
+        <div className="quote ">
+          <div className="quote-text ">
             <p>
               &quot;The public is more familiar with bad design than good
               design. It is, in effect, conditioned to prefer bad design,
               because that is what it lives with. The new becomes threatening,
               the old reassuring. &quot;
             </p>
-            <p className="forhim-quote-text-name">
-              Marco Doviano, COTTON men designer
-            </p>
+            <p className="quote-name">Marco Doviano, COTTON-MEN designer</p>
           </div>
 
-          <img src={quoteImage} alt="forhimimg" className="forhim-quote-img " />
+          <img src={quoteImage} alt="forhimimg" className="quote-img " />
         </div>
-        <div className="selects animated-small-delay-him appear">
+        <div className="selects">
           <select
             onChange={e => setColorFilter(e.target.value)}
-            className="select-general "
+            className="select "
           >
             <option value="" disabled defaultValue hidden>
               Select Color
@@ -224,7 +224,7 @@ class ForHim extends Component {
           </select>
           <select
             onChange={e => setTypeFilter(e.target.value)}
-            className="select-general "
+            className="select"
           >
             <option value="" disabled defaultValue hidden>
               Select type
@@ -237,7 +237,7 @@ class ForHim extends Component {
           </select>
           <select
             onChange={e => setPriceFilter(e.target.value)}
-            className="select-general "
+            className="select "
           >
             <option value="0,100" defaultValue hidden>
               Price range
@@ -249,11 +249,15 @@ class ForHim extends Component {
             <option value="45,100">45+ &euro; </option>
           </select>
         </div>
-        <div className="fetch-error">
-          {this.props.error ? <h1>Unknow Netowork error</h1> : null}
-        </div>
-        <div className="forhim-container animated-big-delay-him appear">
-          {toShowProducts}
+
+        <div className="card-container animated appear">
+          {this.props.error ? (
+            <div className="fetch-error">Unknown network error</div>
+          ) : null}
+          {this.props.loading ? <div className="loader" /> : toShowProducts}
+          {toShowProducts.length === 0 && !this.props.loading ? (
+            <div className="no_matches">No product matches your filters</div>
+          ) : null}
         </div>
       </div>
     );
@@ -262,6 +266,7 @@ class ForHim extends Component {
 const mapStateToProps = state => {
   return {
     items: state.cart.items,
+    loading: state.cart.loading,
     error: state.cart.error
   };
 };

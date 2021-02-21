@@ -8,7 +8,10 @@ import Notification from "../../UI elements/Notification/Notification";
 import quoteImage from "../../assets/forHerNew.png";
 import Card from "../../components/Card/Card";
 import "./ForHer.scss";
+import "../../styles/Spinner.scss";
+import "../../styles/Animations.scss";
 // similar to allproducts
+// TODO move modal and notification logic to redux
 class ForHer extends Component {
   state = {
     modal: {
@@ -191,24 +194,22 @@ class ForHer extends Component {
           <Notification msg={this.state.notification.notificationMsg} />
         ) : null}
 
-        <div className="forher-quote animated-her fade-in-left">
-          <img src={quoteImage} alt="forerimg" className="forher-quote-img" />
-          <div className="forher-quote-text">
+        <div className="quote">
+          <img src={quoteImage} alt="forerimg" className="quote-img" />
+          <div className="quote-text">
             <p>
               &quot;Don&apos;t be into trends. Don&apos;t make fashion own you,
               but you decide what you are, what you want to express by the way
               you dress and the way to live.&quot;
             </p>
-            <p className="forher-quote-text-name">
-              Anna Banana, COTTON lead designer
-            </p>
+            <p className="quote-name">Anna West, COTTON lead designer</p>
           </div>
         </div>
 
-        <div className="selects animated-small-delay-her appear">
+        <div className="selects">
           <select
             onChange={e => setColorFilter(e.target.value)}
-            className="select-general"
+            className="select"
           >
             <option value="" disabled defaultValue hidden>
               Select Color
@@ -226,7 +227,7 @@ class ForHer extends Component {
           </select>
           <select
             onChange={e => setTypeFilter(e.target.value)}
-            className="select-general"
+            className="select"
           >
             <option value="" disabled defaultValue hidden>
               Select type
@@ -241,7 +242,7 @@ class ForHer extends Component {
           </select>
           <select
             onChange={e => setPriceFilter(e.target.value)}
-            className="select-general"
+            className="select"
           >
             <option value="0,100" defaultValue hidden>
               Price range
@@ -253,11 +254,15 @@ class ForHer extends Component {
             <option value="45,100">45+ &euro; </option>
           </select>
         </div>
-        <div className="fetch-error">
-          {this.props.error ? <h1>Unknow Netowork error</h1> : null}
-        </div>
-        <div className="forher-container animated-big-delay-her appear">
-          {toShowProducts}
+
+        <div className="container animated appear">
+          {this.props.error ? (
+            <div className="fetch-error">Unknown network error</div>
+          ) : null}
+          {this.props.loading ? <div className="loader" /> : toShowProducts}
+          {toShowProducts.length === 0 && !this.props.loading ? (
+            <div className="no_matches">No product matches your filters</div>
+          ) : null}
         </div>
       </div>
     );
@@ -266,6 +271,7 @@ class ForHer extends Component {
 const mapStateToProps = state => {
   return {
     items: state.cart.items,
+    loading: state.cart.loading,
     error: state.cart.error
   };
 };

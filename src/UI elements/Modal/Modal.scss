@@ -2,159 +2,162 @@
   background-color: white;
   border: 0.8rem black double;
   border-radius: 0.5rem;
-  width: 70%;
+  display: flex;
   height: 80%;
+  justify-content: space-around;
+  left: 50%;
   position: fixed;
   top: 50%;
-  left: 50%;
   transform: translate(-50%, -50%);
+  width: 70%;
   z-index: 6;
-  display: flex;
-  justify-content: space-around;
-}
-.modal-added {
-  margin-top: 5rem;
-  font-size: 2rem;
-  color: rgb(236, 109, 109);
-}
-.modalImgContainer {
-  p {
-    text-align: center;
-    font-size: 2.5rem;
+  .on_added_text {
+    color: rgb(37, 110, 35);
+    font-size: 2.2rem;
+    max-width: 100%;
   }
-  position: relative;
-  width: 40%;
-}
-.modalImg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  height: 80%;
-}
-
-.modalInfo {
-  border-left: double rgb(15, 15, 15) 0.4rem;
-  padding: 1rem;
-  position: relative;
-  top: 5%;
-  height: 90%;
-
-  display: flex;
-  flex-direction: column;
-  font-size: 2rem;
-}
-.modalClose {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  cursor: pointer;
-  font-size: 2rem;
-}
-
-.modalButtons {
-  .modalCloseButton {
-    position: absolute;
-    bottom: 2rem;
-    right: 1rem;
-    border: double 1rem black;
-    background-color: rgb(248, 136, 136);
-    font-size: 2rem;
-    padding: 0.5rem;
-    cursor: pointer;
-    &:active {
-      transform: translateY(0.2rem);
+  .img_container {
+    padding: 5rem;
+    position: relative;
+    width: 60%;
+    p {
+      font-size: 2.5rem;
+      text-align: center;
     }
   }
-  .modalAddToCartButton {
+  .modal-img {
+    height: 30rem;
+    left: 50%;
     position: absolute;
-    bottom: 2rem;
-    right: 10rem;
-    border: double 1rem black;
-
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 30rem;
+  }
+  .info {
+    border-left: double rgb(15, 15, 15) 0.4rem;
+    display: flex;
+    flex-direction: column;
     font-size: 2rem;
-    padding: 0.5rem;
+    height: 90%;
+    padding: 1rem;
+    position: relative;
+    top: 5%;
+    width: 40%;
+    p {
+      margin: 0.5rem;
+    }
+  }
+  .close {
     cursor: pointer;
-    &:active {
-      transform: translateY(0.2rem);
+    font-size: 2.6rem;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+  }
+  .buttons {
+    .close-button {
+      -moz-transition: all 0.3s;
+      -o-transition: all 0.3s;
+      -webkit-transition: all 0.3s;
+      background-color: rgb(247, 91, 91);
+      border: double 1rem black;
+      bottom: 2rem;
+      cursor: pointer;
+      font-size: 1.8rem;
+      padding: 0.8rem;
+      position: absolute;
+      right: 1rem;
+      transition: 0.3s;
+      &:hover {
+        transform: scale(1.05);
+      }
+      &:active {
+        transform: translateY(0.2rem);
+      }
+    }
+    .add-button {
+      -moz-transition: all 0.3s;
+      -o-transition: all 0.3s;
+      -webkit-transition: all 0.3s;
+      border: double 1rem black;
+      bottom: 2rem;
+      cursor: pointer;
+      font-size: 1.8rem;
+      padding: 0.8rem;
+      position: absolute;
+      right: 10rem;
+      transition: 0.3s;
+      &:hover {
+        transform: scale(1.05);
+      }
+      &:active {
+        transform: translateY(0.2rem);
+      }
     }
   }
 }
-
 @media (max-width: 2000px) {
   .modal {
     height: 75%;
     width: 80%;
   }
 }
-@media (max-width: 1025px) {
-  .modalImg {
-    width: 80%;
-    height: 45%;
-  }
-}
-@media (max-width: 992px) {
-  .modalImg {
-    width: 80%;
-    height: 55%;
+@media (max-width: 1024px) {
+  .modal {
+    .modal-img {
+      height: 25rem;
+      width: 25rem;
+    }
   }
 }
 @media (max-width: 650px) {
-  .modalImg {
-    width: 70%;
-    height: 40%;
-  }
-}
-@media (max-width: 550px) {
   .modal {
-    flex-direction: column;
-    justify-content: center;
     align-content: center;
-    height: 70%;
-  }
-  .modalImgContainer {
-    height: 50rem;
-    width: 100%;
-  }
-  .modalInfo {
-    border-top: 0.5rem double rgb(194, 192, 192);
-    border-left: none;
-    width: 80%;
-    align-self: center;
-  }
-  .modalImg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    flex-direction: column;
     height: 80%;
-    width: 50%;
+    justify-content: center;
+    .img_container {
+      height: 45rem;
+      width: 100%;
+    }
+    .info {
+      align-self: center;
+      border-left: none;
+      border-top: 0.5rem double rgb(194, 192, 192);
+      width: 80%;
+    }
+    .modal-img {
+      height: 28rem;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 28rem;
+    }
   }
 }
 @media (max-width: 350px) {
   .modal {
-    flex-direction: column;
-    justify-content: center;
     align-content: center;
+    flex-direction: column;
     height: 70%;
-  }
-  .modalImgContainer {
-    height: 35rem;
-    width: 100%;
-  }
-  .modalInfo {
-    border-top: 0.5rem double rgb(194, 192, 192);
-    border-left: none;
-    width: 80%;
-    align-self: center;
-  }
-  .modalImg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 80%;
-    width: 50%;
+    justify-content: center;
+    .img_container {
+      height: 35rem;
+      width: 100%;
+    }
+    .info {
+      align-self: center;
+      border-left: none;
+      border-top: 0.5rem double rgb(194, 192, 192);
+      width: 80%;
+    }
+    .modal-img {
+      height: 80%;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 50%;
+    }
   }
 }

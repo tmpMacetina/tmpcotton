@@ -1,8 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "./HomeHeader.scss";
 import ladyImg from "../../../assets/lady.png";
 import cottonImg from "../../../assets/cotton-min.png";
+import "./HomeHeader.scss";
+import "../../../styles/Animations.scss";
 // presentational component, something like a header just for home page,not a good name I know...
 const HeaderImage = () => {
   return (
@@ -12,16 +13,16 @@ const HeaderImage = () => {
         alt="header-lady"
         className="lady-img  animated appear"
       />
-      <div className="homeheader-text animated  fade-in-left">
-        <div className="homeheader-text-quote">
-          We offer the finest COTTON products
+      <div className="offer animated  fade-in-left">
+        <div className="offer-text">We offer the finest COTTON products</div>
+        <div className="offer-button">
+          <NavLink
+            className=" animated-small-delay fade-in-left"
+            to="/allproducts"
+          >
+            Click here to see our offer
+          </NavLink>
         </div>
-        <NavLink
-          className="homeheader-button animated-small-delay fade-in-left"
-          to="/allproducts"
-        >
-          Click here to see our offer
-        </NavLink>
       </div>
 
       <img

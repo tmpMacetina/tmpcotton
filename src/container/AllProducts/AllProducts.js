@@ -7,7 +7,11 @@ import Modal from "../../UI elements/Modal/Modal";
 import Notification from "../../UI elements/Notification/Notification";
 import Card from "../../components/Card/Card";
 import "./AllProducts.scss";
+import "../../styles/Spinner.scss";
+import "../../styles/Animations.scss";
 // page with all products
+// TODO move modal and notification logic to redux
+// ( TODO for ForHim and ForHer is same )
 class AllProducts extends Component {
   state = {
     modal: {
@@ -38,7 +42,7 @@ class AllProducts extends Component {
   }
 
   render() {
-    // when items init ,set allItems to init items from Redux
+    // when items init, set allItems to init items from Redux
     let allItems = [];
     if (this.props.items.items) allItems = this.props.items.items;
 
@@ -58,7 +62,7 @@ class AllProducts extends Component {
       if (this.state.filters.color === item.color) return true;
       return false;
     });
-    // opens modal
+
     const openModal = props => {
       this.setState({
         modal: {
@@ -87,7 +91,7 @@ class AllProducts extends Component {
         }
       }));
     };
-    // closes it
+
     const closeModalMsg = () => {
       this.setState(prevState => ({
         ...prevState,
@@ -100,7 +104,7 @@ class AllProducts extends Component {
     // shows and removes message inside modal when item is added to the cart
     const handleModalMsg = () => {
       showModalMsg();
-      setTimeout(closeModalMsg, 1000);
+      setTimeout(closeModalMsg, 1300);
     };
     // shows notification
     const openNoti = msg => {
@@ -111,7 +115,7 @@ class AllProducts extends Component {
         }
       });
     };
-    // closes notification
+
     const closeNoti = () => {
       this.setState({ notification: { showNotification: false } });
     };
@@ -195,10 +199,10 @@ class AllProducts extends Component {
           <Notification msg={this.state.notification.notificationMsg} />
         ) : null}
 
-        <div className="selects animated-small-delay-all  appear">
+        <div className="selects">
           <select
             onChange={e => setColorFilter(e.target.value)}
-            className="select-general"
+            className="select"
           >
             <option value="" disabled defaultValue hidden>
               Select Color
@@ -213,12 +217,11 @@ class AllProducts extends Component {
             <option value="grey">Grey</option>
             <option value="brown">Brown</option>
             <option value="green">Green</option>
-
             <option value="orange">Orange</option>
           </select>
           <select
             onChange={e => setTypeFilter(e.target.value)}
-            className="select-general"
+            className="select"
           >
             <option value="" disabled defaultValue hidden>
               Select type
@@ -233,7 +236,7 @@ class AllProducts extends Component {
           </select>
           <select
             onChange={e => setPriceFilter(e.target.value)}
-            className="select-general"
+            className="select"
           >
             <option value="0,100" defaultValue hidden>
               Price range
@@ -245,11 +248,16 @@ class AllProducts extends Component {
             <option value="45,100">45+ &euro; </option>
           </select>
         </div>
-        <div className="fetch-error">
-          {this.props.error ? <h1>Unknow Netowork error</h1> : null}
-        </div>
-        <div className="allproducts-container animated-big-delay-all appear">
-          {toShowProducts}
+
+        <div className="container animated appear">
+          {/* shows products / no matches / error /spinner accordingly */}
+          {this.props.error ? (
+            <div className="fetch-error">Unknow Netowork error</div>
+          ) : null}
+          {this.props.loading ? <div className="loader" /> : toShowProducts}
+          {toShowProducts.length === 0 && !this.props.loading ? (
+            <div className="no_matches">No product matches your filters</div>
+          ) : null}
         </div>
       </div>
     );
@@ -258,6 +266,7 @@ class AllProducts extends Component {
 const mapStateToProps = state => {
   return {
     items: state.cart.items,
+    loading: state.cart.loading,
     error: state.cart.error
   };
 };

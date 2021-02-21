@@ -33,7 +33,7 @@ class SideDrawer extends Component {
       <>
         <button
           type="button"
-          className="sideDrawerButton"
+          className="burgerbutton"
           onClick={toggleSideDrawer}
         >
           <FaBars className="bars" />
@@ -50,74 +50,74 @@ class SideDrawer extends Component {
           <div className="holder" ref={this.SDref}>
             <Backdrop onclick={toggleSideDrawer} />
 
-            <div className="sideDrawer">
+            <div className="sidedrawer">
               <div
-                className="sideDrawerClose"
+                className="close"
                 onClick={toggleSideDrawer}
                 onKeyDown={toggleSideDrawer}
                 role="link"
                 tabIndex={0}
               >
-                <FaTimes className="close" />
+                <FaTimes className="close-icon" />
               </div>
-
-              <NavLink
-                onClick={toggleSideDrawer}
-                activeClassName="active-class"
-                className="sideDrawerLink"
-                exact
-                to="/"
-              >
-                Home
-              </NavLink>
-              <NavLink
-                onClick={toggleSideDrawer}
-                activeClassName="active-class"
-                to="/forhim"
-                className="sideDrawerLink"
-              >
-                For him
-              </NavLink>
-              <NavLink
-                onClick={toggleSideDrawer}
-                activeClassName="active-class"
-                to="/forher"
-                className="sideDrawerLink"
-              >
-                For her
-              </NavLink>
-              {this.props.userId || this.props.token ? (
-                <NavLink
-                  onClick={() => {
-                    toggleSideDrawer();
-                    handleLogOut();
-                  }}
-                  activeClassName="active-class"
-                  className="sideDrawerLink"
-                  to="/cotton"
-                >
-                  Log out
-                </NavLink>
-              ) : (
+              <div>
                 <NavLink
                   onClick={toggleSideDrawer}
                   activeClassName="active-class"
-                  className="sideDrawerLink"
-                  to="/login"
+                  className="link"
+                  exact
+                  to="/cotton"
                 >
-                  Log In
+                  Home
                 </NavLink>
-              )}
+                <NavLink
+                  onClick={toggleSideDrawer}
+                  activeClassName="active-class"
+                  to="/forhim"
+                  className="link"
+                >
+                  For him
+                </NavLink>
+                <NavLink
+                  onClick={toggleSideDrawer}
+                  activeClassName="active-class"
+                  to="/forher"
+                  className="link"
+                >
+                  For her
+                </NavLink>
+                {this.props.userId || this.props.token ? (
+                  <NavLink
+                    onClick={() => {
+                      toggleSideDrawer();
+                      handleLogOut();
+                    }}
+                    className="link"
+                    to="/cotton"
+                  >
+                    Log out
+                  </NavLink>
+                ) : (
+                  <NavLink
+                    onClick={toggleSideDrawer}
+                    activeClassName="active-class"
+                    className="link"
+                    to="/login"
+                  >
+                    Log In
+                  </NavLink>
+                )}
+                <NavLink
+                  onClick={toggleSideDrawer}
+                  activeClassName="active-class"
+                  to="/cart"
+                  className="link"
+                >
+                  Cart
+                </NavLink>{" "}
+              </div>
 
-              <NavLink
-                onClick={toggleSideDrawer}
-                activeClassName="active-class"
-                to="/cart"
-                className="sideDrawerLink"
-              >
-                Cart
-              </NavLink>
-              <img className="sideDrawerImg" src={Logo} alt="logo" />
+              <img className="sd-img" src={Logo} alt="logo" />
             </div>
           </div>
         </CSSTransition>

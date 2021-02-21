@@ -7,8 +7,7 @@ import { connect } from "react-redux";
 import * as actions from "../store/actions/authActions";
 // Firebase Authentcation is used to simulate authentication
 // https://firebase.google.com/docs/reference/rest/auth for more info
-//
-
+// TODO add spinner while waiting for an answer, add reset password
 class LogIn extends Component {
   state = {
     email: {
@@ -22,6 +21,12 @@ class LogIn extends Component {
       touched: false
     }
   };
+
+  // auth error removed on reloading / page change
+  // error is set to true on bad login info
+  componentDidMount() {
+    this.props.authErrorRemove();
+  }
 
   render() {
     const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,3})+$/;
@@ -44,7 +49,7 @@ class LogIn extends Component {
           }
         }));
     };
-    // handles email input, calls validation too
+    // handles name input, calls verification too
     const handleChangeEmail = event => {
       const targetValue = event.target.value;
 
@@ -60,7 +65,7 @@ class LogIn extends Component {
         () => validateEmail()
       );
     };
-    // validates password,just if it is >=8 chars
+    // validates password, just if it is >=8 chars
     const validatePassword = () => {
       if (this.state.password.value.length >= 8)
         this.setState(prevState => ({
@@ -79,7 +84,7 @@ class LogIn extends Component {
           }
         }));
     };
-    // handles password input ,calls validationion too
+    // handles password input, calls validation too
     const handleChangePassword = event => {
       const targetValue = event.target.value;
 
@@ -99,7 +104,7 @@ class LogIn extends Component {
     const handleSubmit = event => {
       event.preventDefault();
     };
-    // handle login (from Redux!)
+    // handle login function (from redux)
     const handleLogin = (email, password) => {
       this.props.onLogIn(email, password);
     };
@@ -107,42 +112,48 @@ class LogIn extends Component {
     const buttonEnable = this.state.password.valid && this.state.email.valid;
 
     return (
-      <form className="login-form animated appear" onSubmit={handleSubmit}>
-        <div className="login-text">Log In</div>
+      <form className="login-form " onSubmit={handleSubmit}>
+        <h1 className="title">Log In</h1>
         <div className="form-item">
-          <p className="input-title">E-mail:</p>
-          <input
-            className="login-input"
-            type="email"
-            required
-            value={this.state.email.value}
-            placeholder="example@mail.com"
-            onChange={handleChangeEmail}
-          />
-          <p className="error-text">
-            {!this.state.email.valid && this.state.email.touched
-              ? "Enter valid e-mail"
-              : null}
-          </p>
+          <label htmlFor="name" className="input-title">
+            E-mail:
+            <input
+              className="login-input"
+              type="email"
+              id="email"
+              required
+              value={this.state.email.value}
+              placeholder="example@mail.com"
+              onChange={handleChangeEmail}
+            />
+            <p className="input-error-text">
+              {!this.state.email.valid && this.state.email.touched
+                ? "Enter valid e-mail"
+                : null}
+            </p>
+          </label>
         </div>
         <div className="form-item">
-          <p className="input-title">Password:</p>
-          <input
-            className="login-input"
-            placeholder="password"
-            type="password"
-            value={this.state.password.value}
-            required
-            onChange={handleChangePassword}
-          />
-          <p className="error-text">
-            {!this.state.password.valid && this.state.password.touched
-              ? "Must have 8 characters"
-              : null}
-          </p>
+          <label htmlFor="password" className="input-title">
+            Password:
+            <input
+              className="login-input"
+              placeholder="password"
+              type="password"
+              id="password"
+              value={this.state.password.value}
+              required
+              onChange={handleChangePassword}
+            />
+            <p className="input-error-text">
+              {!this.state.password.valid && this.state.password.touched
+                ? "Must have 8 characters"
+                : null}
+            </p>
+          </label>
         </div>
         <button
-          type="button"
+          type="submit"
           className="login-button"
           disabled={!buttonEnable}
           onClick={() =>
@@ -158,12 +169,14 @@ class LogIn extends Component {
           <div className="login-error">Invalid e-mail or password</div>
         ) : null}
         {/* on successful login,redirect to home page */}
-        {this.props.token && this.props.userId ? <Redirect to="/" /> : null}
+        {this.props.token && this.props.userId ? (
+          <Redirect to="/cotton" />
+        ) : null}
       </form>
     );
   }
 }
-// get data from redux
+// data from redux
 const mapStateToProps = state => {
   return {
     token: state.auth.token,
@@ -171,9 +184,11 @@ const mapStateToProps = state => {
     error: state.auth.error
   };
 };
+// functions from redux
 const mapDispatchToProps = dispatch => {
   return {
-    onLogIn: (email, password) => dispatch(actions.authLogIn(email, password))
+    onLogIn: (email, password) => dispatch(actions.authLogIn(email, password)),
+    authErrorRemove: () => dispatch(actions.authErrorRemove())
   };
 };
 

@@ -1,141 +1,112 @@
-.sideDrawer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 40%;
+.sidedrawer {
+  align-items: center;
   background-color: white;
   border-right: double black 0.8rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
+  height: 100vh;
+  justify-content: space-around;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 40%;
   z-index: 10;
   .active-class {
     font-weight: 900;
   }
-}
-.sideDrawerLink {
-  a {
+  .link {
+    align-items: flex-end;
+    border-bottom: 0.4rem rgb(212, 211, 211) double;
+    color: black;
+    display: flex;
+    font-size: 2.4rem;
+    height: 8rem;
+    justify-content: center;
+    margin: 0.6rem;
+    padding: 0;
     text-decoration: none;
+    text-transform: uppercase;
+    width: 30rem;
+    a {
+      text-decoration: none;
+    }
+    &:hover {
+      font-weight: 900;
+    }
+    .active-class {
+      font-weight: bold;
+    }
   }
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 2.2rem;
-  color: black;
-  border-bottom: 0.4rem rgb(212, 211, 211) double;
-  height: 7%;
-  width: 70%;
-
-  &:hover {
-    font-weight: 900;
+  .close {
+    cursor: pointer;
+    height: 3rem;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    width: 3rem;
+    .close-icon {
+      color: black;
+      font-size: 3rem;
+    }
   }
-  .active-class {
-    font-weight: bold;
-  }
-}
-
-.logoutSideDraw {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 2.2rem;
-  color: black;
-  border-bottom: 0.4rem rgb(212, 211, 211) double;
-  height: 7%;
-  width: 70%;
-  cursor: pointer;
-  &:hover {
-    font-weight: 900;
+  .sd-img {
+    align-self: center;
+    height: min-content;
+    width: min-content;
   }
 }
-.sideDrawerButton {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
+.burgerbutton {
   background-color: #fff;
   border-radius: 0.5rem;
-  width: 5rem;
-  height: 5rem;
-  opacity: 0.8;
   cursor: pointer;
   display: none;
+  height: 5rem;
+  opacity: 0.8;
+  position: fixed;
+  right: 2rem;
+  top: 2rem;
+  width: 5rem;
   .bars {
+    -ms-transform: translate(-50%, -50%);
+    height: 3rem;
+    left: 50%;
     margin: 0;
     position: absolute;
     top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    height: 3rem;
     width: 3rem;
   }
 }
-.sideDrawerClose {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  width: 3rem;
-  height: 3rem;
-  cursor: pointer;
-  .close {
-    font-size: 3rem;
-    color: black;
-  }
-}
-.sideDrawerImg {
-  height: min-content;
-  width: min-content;
-}
-
 @media (max-width: 2000px) {
-  .sideDrawer {
+  .sidedrawer {
     width: 35%;
   }
 }
 @media (max-height: 500px) {
-  .sideDrawerLink {
-    font-size: 3rem;
-    height: 4%;
-  }
-  .logoutSideDraw {
-    font-size: 3rem;
-    height: 4%;
-  }
-  .sideDrawerImg {
-    width: 3rem;
-    height: 3rem;
+  .sidedrawer {
+    .sd-img {
+      align-self: center;
+      height: 10rem;
+      width: 10rem;
+    }
   }
 }
 @media (max-width: 1024px) {
-  .sideDrawer {
+  .sidedrawer {
     width: 55%;
+    .link {
+      font-size: 2.6rem;
+    }
   }
-  .sideDrawerLink {
-    font-size: 2rem;
-    height: 5%;
-  }
-  .logoutSideDraw {
-    font-size: 2rem;
-    height: 5%;
-  }
-
-  .sideDrawerButton {
+  .burgerbutton {
     display: block;
   }
 }
 @media (max-width: 600px) {
-  .sideDrawer {
-    width: 70%;
+  .sidedrawer {
+    width: 75%;
   }
 }
-
 .my-node-enter {
   opacity: 0;
 }
@@ -143,7 +114,6 @@
   opacity: 1;
   transition: opacity 500ms;
 }
-
 .my-node-exit {
   opacity: 1;
 }

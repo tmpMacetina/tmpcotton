@@ -2,7 +2,8 @@ import {
   AUTH_START,
   AUTH_SUCCESS,
   AUTH_FAIL,
-  AUTH_LOGOUT
+  AUTH_LOGOUT,
+  AUTH_ERROR_REMOVE
 } from "../actions/actionTypes/actionTypes";
 
 const initialState = {
@@ -32,6 +33,9 @@ const authReducer = (state = initialState, action) => {
 
   if (action.type === AUTH_LOGOUT) {
     return { ...state, token: null, userId: null };
+  }
+  if (action.type === AUTH_ERROR_REMOVE) {
+    return { ...state, error: null };
   }
 
   return state;

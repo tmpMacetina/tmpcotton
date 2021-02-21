@@ -1,169 +1,91 @@
 .homeheader {
-  grid-column: page-start/page-end;
   display: flex;
   flex-direction: row;
+  grid-column: page-start/page-end;
   justify-content: space-between;
   min-height: 45rem;
+  padding: 2.5rem;
   width: 100%;
-  padding: 1rem;
-}
-.lady-img {
-  height: 45rem;
-}
-.cotton-img {
-  position: relative;
-  top: 25%;
-  height: 25rem;
-}
-.homeheader-text {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-  position: relative;
-  width: 35rem;
-  height: 100%;
-}
-.homeheader-text-quote {
-  margin-bottom: 1rem;
-  font-size: 3.5rem;
-  text-align: center;
-}
-.homeheader-button {
-  align-self: center;
-  height: min-content;
-  padding: 0.5rem;
-  border: double 1rem black;
-  border-radius: 0.4rem;
-  font-size: 2.5rem;
-  text-align: center;
-  cursor: pointer;
-  transition: 0.8s;
-  &:hover {
-    -webkit-box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.75);
-    box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.75);
+  .lady-img {
+    height: 45rem;
   }
-}
-a:hover {
-  text-decoration: none;
-  font-weight: 400;
+  .cotton-img {
+    height: 25rem;
+    position: relative;
+    top: 25%;
+  }
+  .offer {
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    position: relative;
+    width: 35rem;
+  }
+  .offer-text {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    text-decoration: none;
+  }
+  .offer-button {
+    -moz-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    align-self: center;
+    border: double 1rem black;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    font-weight: 500;
+    height: min-content;
+    padding: 1rem;
+    text-align: center;
+    text-decoration: none;
+    transition: 0.4s;
+    a {
+      color: black;
+      font-size: 2.6rem;
+      text-decoration: none;
+    }
+    &:hover {
+      -moz-box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.75);
+      -webkit-box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.75);
+      box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.75);
+      transform: scale(1.05);
+    }
+  }
 }
 @media (max-width: 1024px) {
   .homeheader {
-    min-height: 40rem;
     justify-content: space-around;
     margin-bottom: 0;
+    min-height: 40rem;
     overflow: hidden;
   }
   .lady-img {
-    top: 5%;
     height: 40rem;
-  }
-  .cotton-img {
-    display: none;
-  }
-  .homeheader-text {
-    top: 10%;
-    width: 35rem;
-  }
-  .homeheader-text-quote {
-    font-size: 3rem;
-  }
-}
-@media (max-width: 576px) {
-  .homeheader {
-    min-height: 33rem;
-    width: 100%;
-    justify-content: center;
-    padding: 1rem;
-  }
-  .lady-img {
     top: 5%;
-    height: 33rem;
   }
   .cotton-img {
     display: none;
   }
-  .homeheader-text {
-    top: 0;
-    width: 20rem;
-    font-size: 2.5rem;
-    margin-right: 1rem;
-  }
-  .homeheader-button {
-    font-size: 1.2rem;
-    width: 22rem;
-  }
 }
+@media (max-width: 600px) {
+  .homeheader {
+    justify-content: center;
+    min-height: 35rem;
+    padding: 1rem;
+    padding-left: 0;
+    padding-right: 2.5rem;
+    width: 100%;
 
-// animation
-.animated {
-  -webkit-animation-duration: 2s;
-  animation-duration: 2s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-.animated-small-delay {
-  -webkit-animation-duration: 3s;
-  animation-duration: 3s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-.animated-big-delay {
-  -webkit-animation-duration: 3s;
-  animation-duration: 3s;
-  -webkit-animation-delay: 1s;
-  animation-delay: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-
-@-webkit-keyframes fade-in-left {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateX(-3rem);
+    .lady-img {
+      height: 33rem;
+      top: 5%;
+    }
+    .cotton-img {
+      display: none;
+    }
   }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateX(0);
-  }
-}
-
-@keyframes fade-in-left {
-  0% {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-@-webkit-keyframes appear {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateX(-3rem);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateX(0);
-  }
-}
-
-@keyframes appear {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-.appear {
-  -webkit-animation-name: appear;
-  animation-name: appear;
-}
-.fade-in-left {
-  -webkit-animation-name: fade-in-left;
-  animation-name: fade-in-left;
 }

@@ -1,152 +1,79 @@
 .forher {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
   flex-wrap: wrap;
-  height: min-content;
-  padding: 3rem;
-  margin: 3rem;
   grid-column: content-start/content-end;
-}
-.forher-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
   height: min-content;
-}
-.forher-quote {
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  width: 100%;
-  padding: 2rem;
-}
-.forher-quote-img {
-  height: 25rem;
-  width: 20rem;
-}
-.forher-quote-text {
-  font-size: 2rem;
-  width: 70%;
-  padding: 4rem;
-}
-.forher-quote-text-name {
-  font-size: 1.8rem;
-  font-style: italic;
-  text-align: right;
-  margin: 1rem;
-}
-.selects {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
   justify-content: space-around;
-  align-content: center;
-}
-.select-general {
-  outline: none;
-  border-radius: 0.2rem;
-  border: double black 0.6rem;
-  font-size: 2rem;
-  height: 5rem;
-  width: 28rem;
-  margin-top: 2rem;
-  margin-bottom: 3rem;
-  -moz-appearance: none;
-  background-color: white;
-}
-.fetch-error {
-  margin: 3rem;
-  width: 100%;
-  font-size: 3rem;
-  text-align: center;
+  padding: 2.5rem;
+  .container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: min-content;
+    justify-content: space-around;
+  }
+  .quote {
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    width: 100%;
+  }
+  .quote-img {
+    height: 25rem;
+    width: 20rem;
+  }
+  .quote-text {
+    font-size: 2rem;
+    padding: 4rem;
+    width: 70%;
+  }
+  .quote-name {
+    font-size: 1.8rem;
+    font-style: italic;
+    margin: 1rem;
+    text-align: right;
+  }
+  .selects {
+    align-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+  }
+  .select {
+    -moz-appearance: none;
+    background-color: white;
+    border: double black 0.6rem;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    font-size: 2rem;
+    height: 5rem;
+    margin-bottom: 3rem;
+    margin-top: 2rem;
+    outline: none;
+    width: 28rem;
+  }
+  .fetch-error {
+    font-size: 3rem;
+    margin: 3rem;
+    text-align: center;
+    width: 100%;
+  }
+  .no_matches {
+    font-size: 3rem;
+    margin: 5rem;
+  }
 }
 @media (max-width: 600px) {
   .forher {
-    padding: 0.5rem;
     margin: 0.5rem;
+    padding: 0.5rem;
+    .quote-text {
+      padding: 2rem;
+      width: 100%;
+    }
   }
-  .forher-quote-text {
-    width: 100%;
-    padding: 2rem;
-  }
-  .select-all {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-content: center;
-  }
-}
-
-// animation
-.animated-her {
-  -webkit-animation-duration: 2.5s;
-  animation-duration: 2.5s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-.animated-small-delay-her {
-  -webkit-animation-duration: 2s;
-  animation-duration: 2s;
-  -webkit-animation-delay: 0.7s;
-  animation-delay: 0.7s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-.animated-big-delay-her {
-  -webkit-animation-duration: 2.5s;
-  animation-duration: 2.5s;
-  -webkit-animation-delay: 1.2s;
-  animation-delay: 1.2s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-
-@-webkit-keyframes fade-in-left {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateX(-3rem);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateX(0);
-  }
-}
-
-@keyframes fade-in-left {
-  0% {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-@-webkit-keyframes appear {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes appear {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-.appear {
-  -webkit-animation-name: appear;
-  animation-name: appear;
-}
-.fade-in-left {
-  -webkit-animation-name: fade-in-left;
-  animation-name: fade-in-left;
 }

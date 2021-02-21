@@ -11,20 +11,30 @@ const Header = props => {
   const { auth, logOutHandler } = props;
   return (
     <div className="header">
-      <div className="header-left">
-        <NavLink activeClassName="active-class" exact to="/">
+      <img src={Logo} alt="logo" className="logo" />
+      <div className="left">
+        <NavLink
+          className="link"
+          activeClassName="active-class"
+          exact
+          to="/cotton"
+        >
           Home
         </NavLink>
-        <NavLink activeClassName="active-class" to="/forhim">
+        <NavLink className="link" activeClassName="active-class" to="/forhim">
           For him
         </NavLink>
-        <NavLink activeClassName="active-class" to="/forher">
+        <NavLink className="link" activeClassName="active-class" to="/forher">
           For her
         </NavLink>
       </div>
-      <img src={Logo} alt="logo" className="logo" />
-      <div className="header-right">
-        <NavLink activeClassName="active-class" to="/allproducts">
+
+      <div className="right">
+        <NavLink
+          className="link"
+          activeClassName="active-class"
+          to="/allproducts"
+        >
           All products
         </NavLink>
         {auth ? (
@@ -32,11 +42,11 @@ const Header = props => {
             Log out
           </div>
         ) : (
-          <NavLink activeClassName="active-class" to="/login">
+          <NavLink className="link" activeClassName="active-class" to="/login">
             Log In
           </NavLink>
         )}
-        <NavLink activeClassName="active-class" to="/cart">
+        <NavLink className="link" activeClassName="active-class" to="/cart">
           Cart
         </NavLink>
       </div>

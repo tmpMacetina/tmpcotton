@@ -1,162 +1,105 @@
 .signup-form {
-  grid-column: content-start/content-end;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  width: 100%;
-  margin-top: 5rem;
-  margin-bottom: 5rem;
-}
-.signup-text {
-  width: 100%;
-  margin-bottom: 3rem;
-  border-bottom: black double 1.5rem;
-  text-transform: uppercase;
-  font-size: 4rem;
-  text-align: center;
-}
-.form-item {
   display: flex;
   flex-direction: column;
-  width: 27rem;
-  margin-top: 2rem;
-}
-.signup-input {
-  height: 5rem;
-  width: 27rem;
-  border: none;
-  border-bottom: solid black 0.1rem;
-  outline: none;
-  font-size: 2rem;
-}
-.input-title {
-  text-transform: uppercase;
-  font-size: 2rem;
-}
-.error-text {
-  color: red;
-  text-align: right;
-}
-.phone-start {
-  height: 5rem;
-  width: 7rem;
-  margin-top: 1rem;
-  border: none;
-  border-bottom: solid black 0.1rem;
-  outline: none;
-  font-size: 2rem;
-}
-.phone-end {
-  height: 5rem;
-  width: 20rem;
-  margin-top: 1rem;
-  border: none;
-  border-bottom: solid black 0.1rem;
-  outline: none;
-  font-size: 2rem;
-}
+  grid-column: content-start/content-end;
+  margin-bottom: 5rem;
+  margin-top: 5rem;
+  width: 100%;
 
-.country-selector {
-  height: 5rem;
-  width: 27rem;
-  margin-top: 0.8rem;
-  border: double 0.2rem;
-  border-radius: 0.5rem;
-  font-family: inherit;
-  font-size: 2rem;
-}
-.signup-button {
-  height: 5rem;
-  width: 27rem;
-  margin: 2rem;
-  border: double black 0.8rem;
-  cursor: pointer;
-  font-size: 2rem;
-  &:disabled {
-    cursor: not-allowed;
-    background-color: rgb(150, 150, 150);
+  .title {
+    border-bottom: black double 1.5rem;
+    font-size: 4rem;
+    font-weight: 500;
+    margin-bottom: 3rem;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
   }
-  &:active {
-    transform: translateY(0.3rem);
+  .form-item {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    width: 27rem;
   }
-}
-.signup-error {
-  font-weight: bold;
-  font-size: 2rem;
-  color: red;
-}
-.to-login {
-  margin-top: 1rem;
-  font-size: 1.5rem;
-  color: black;
-}
-// animation
-.animated {
-  -webkit-animation-duration: 2s;
-  animation-duration: 2s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-.animated-small-delay {
-  -webkit-animation-duration: 3s;
-  animation-duration: 3s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-.animated-big-delay {
-  -webkit-animation-duration: 3s;
-  animation-duration: 3s;
-  -webkit-animation-delay: 1s;
-  animation-delay: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-
-@-webkit-keyframes fade-in-left {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateX(-3rem);
+  .signup-input {
+    background-color: white;
+    border: none;
+    border-bottom: solid black 0.1rem;
+    font-size: 2rem;
+    height: 5rem;
+    outline: none;
+    width: 27rem;
   }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateX(0);
+  .input-title {
+    font-size: 2rem;
+    text-transform: uppercase;
   }
-}
-
-@keyframes fade-in-left {
-  0% {
-    opacity: 0;
-    transform: translateX(-20px);
+  .input-error-text {
+    color: red;
+    font-size: 1rem;
+    text-align: right;
+    text-transform: none;
   }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
+  .phone-start {
+    border: none;
+    border-bottom: solid black 0.1rem;
+    font-size: 2rem;
+    height: 5rem;
+    margin-top: 1rem;
+    outline: none;
+    width: 7rem;
   }
-}
-@-webkit-keyframes appear {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateX(-3rem);
+  .phone-end {
+    border: none;
+    border-bottom: solid black 0.1rem;
+    font-size: 2rem;
+    height: 5rem;
+    margin-top: 1rem;
+    outline: none;
+    width: 20rem;
   }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateX(0);
+  .country-selector {
+    background-color: white;
+    border: double 0.2rem;
+    border-radius: 0.5rem;
+    font-family: inherit;
+    font-size: 2rem;
+    height: 5rem;
+    margin-top: 0.8rem;
+    width: 27rem;
   }
-}
-
-@keyframes appear {
-  0% {
-    opacity: 0;
+  .signup-button {
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    border: double black 0.8rem;
+    cursor: pointer;
+    font-size: 2rem;
+    height: 5rem;
+    margin: 2rem;
+    transition: 0.3s;
+    width: 27rem;
+    &:hover {
+      transform: scale(1.05);
+    }
+    &:disabled {
+      background-color: rgb(151, 151, 151);
+      cursor: not-allowed;
+      transform: scale(1);
+    }
+    &:active {
+      transform: translateY(0.3rem);
+    }
   }
-  100% {
-    opacity: 1;
+  .signup-error {
+    color: red;
+    font-size: 2rem;
+    font-weight: bold;
   }
-}
-.appear {
-  -webkit-animation-name: appear;
-  animation-name: appear;
-}
-.fade-in-left {
-  -webkit-animation-name: fade-in-left;
-  animation-name: fade-in-left;
+  .to-login {
+    color: black;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
 }

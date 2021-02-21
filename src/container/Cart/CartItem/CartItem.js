@@ -14,26 +14,22 @@ const CartItem = props => {
   } = props;
   return (
     <div className="cartitem">
-      <div className="cartitem-left">
+      <div className="left">
         <img className="cartitem-img" src={img} alt="smallCart" />
-        <div className="cartitem-nameprice">
+        <div className="nameprice">
           <div>{name}</div>
           <div>{price}&euro;</div>
         </div>
       </div>
-      <div className="cartitem-right">
-        <button type="button" onClick={addQuantity} className="cartitem-add">
+      <div className="right">
+        <button type="button" onClick={addQuantity} className="add">
           +
         </button>
-        <div className="cartitem-quanti">{quantity}</div>
-        <button type="button" onClick={reduceQuantity} className="cartitem-sub">
+        <div className="quanti">{quantity}</div>
+        <button type="button" onClick={reduceQuantity} className="sub">
           -
         </button>
-        <button
-          type="button"
-          onClick={removeFromCart}
-          className="cartitem-remove"
-        >
+        <button type="button" onClick={removeFromCart} className="remove">
           REMOVE THE ITEM
         </button>
       </div>

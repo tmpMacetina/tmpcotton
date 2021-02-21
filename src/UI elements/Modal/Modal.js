@@ -10,32 +10,31 @@ const Modal = props => {
   return ReactDOM.createPortal(
     <>
       <div className="modal">
-        <div className="modalImgContainer">
-          <img className="modalImg" src={props.image} alt="modal" />
+        <div className="img_container">
+          <img className="modal-img" src={props.image} alt="modal" />
         </div>
-        <div className="modalInfo">
-          <p>Name:{props.name}</p>
-          <p>Type:{props.type}</p>
-          <p>Gender:{props.gender}</p>
-          <p>Price:{props.price}&euro;</p>
+        <div className="info">
+          <p>Name: {props.name}</p>
+          <p>Type: {props.type}</p>
+          <p>Gender: {props.gender}</p>
+          <p>Price: {props.price}&euro;</p>
+          <p>Material: cotton</p>
           {props.showMessage ? (
-            <p className="modal-added">
-              {props.name} <br />
-              has been <br />
-              added to cart
+            <p className="on_added_text">
+              {props.name}&nbsp; has been added to cart
             </p>
           ) : null}
         </div>
-        <div className="modalButtons">
-          <div className="modalCloseButton" onClick={props.toggle}>
+        <div className="buttons">
+          <div className="close-button" onClick={props.toggle}>
             Close
           </div>
-          <div className="modalAddToCartButton" onClick={props.addToCart}>
+          <div className="add-button" onClick={props.addToCart}>
             Add to cart
           </div>
         </div>
 
-        <div className="modalClose" onClick={props.toggle}>
+        <div className="close" onClick={props.toggle}>
           <FaTimes />
         </div>
       </div>

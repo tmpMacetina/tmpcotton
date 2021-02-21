@@ -4,7 +4,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/cartActions";
-
 import "./Cart.scss";
 import CartItem from "./CartItem/CartItem";
 
@@ -43,23 +42,23 @@ class Cart extends Component {
     const enableButton = !!(this.props.addedItems.length > 0 && loggedIn);
 
     return (
-      <div className="cart animated appear">
-        <div className="cart-text">CART:</div>
+      <div className="cart">
+        <div className="title">CART</div>
         {itemsToAdd}
-        <div className="cart-total">TOTAL:{this.props.total} &euro;</div>
+        <div className="total">TOTAL: {this.props.total} &euro;</div>
 
         <button
           type="button"
-          className="cart-orderbutton"
+          className="order-button"
           disabled={!enableButton}
           onClick={handleOnSubmit}
         >
           ORDER NOW
         </button>
-        <p className="cart-require">
+        <p className="requirement">
           {loggedIn ? null : "you must be logged in to order"}
         </p>
-        <p className="cart-require">
+        <p className="requirement">
           {this.props.addedItems.length === 0 ? "cart can not be empty" : null}
         </p>
       </div>
