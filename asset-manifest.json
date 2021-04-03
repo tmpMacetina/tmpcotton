@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/tmpcotton/static/css/main.20492956.chunk.css",
+    "main.css": "/tmpcotton/static/css/main.49829128.chunk.css",
     "main.js": "/tmpcotton/static/js/main.b7ab1b82.chunk.js",
     "main.js.map": "/tmpcotton/static/js/main.b7ab1b82.chunk.js.map",
     "runtime-main.js": "/tmpcotton/static/js/runtime-main.50ce0353.js",
@@ -8,9 +8,9 @@
     "static/js/2.32595d14.chunk.js": "/tmpcotton/static/js/2.32595d14.chunk.js",
     "static/js/2.32595d14.chunk.js.map": "/tmpcotton/static/js/2.32595d14.chunk.js.map",
     "index.html": "/tmpcotton/index.html",
-    "precache-manifest.114aa92d54d3c4e30640ed7ffc2e3e1e.js": "/tmpcotton/precache-manifest.114aa92d54d3c4e30640ed7ffc2e3e1e.js",
+    "precache-manifest.3a94b80bb20827f52575ec59a05d8388.js": "/tmpcotton/precache-manifest.3a94b80bb20827f52575ec59a05d8388.js",
     "service-worker.js": "/tmpcotton/service-worker.js",
-    "static/css/main.20492956.chunk.css.map": "/tmpcotton/static/css/main.20492956.chunk.css.map",
+    "static/css/main.49829128.chunk.css.map": "/tmpcotton/static/css/main.49829128.chunk.css.map",
     "static/js/2.32595d14.chunk.js.LICENSE.txt": "/tmpcotton/static/js/2.32595d14.chunk.js.LICENSE.txt",
     "static/media/cotton-min.png": "/tmpcotton/static/media/cotton-min.fa254f01.png",
     "static/media/forHerMin.jpg": "/tmpcotton/static/media/forHerMin.f5ca48a7.jpg",
@@ -22,7 +22,7 @@
   "entrypoints": [
     "static/js/runtime-main.50ce0353.js",
     "static/js/2.32595d14.chunk.js",
-    "static/css/main.20492956.chunk.css",
+    "static/css/main.49829128.chunk.css",
     "static/js/main.b7ab1b82.chunk.js"
   ]
 }
