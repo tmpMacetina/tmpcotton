@@ -8,15 +8,15 @@ Dolor nostrud exercitation deserunt anim.Nulla labore cupidatat amet sunt nulla 
 
 ### `Folder Structure`
 
-UI elements
-admin - admin part of the app
-assets - images, phone data
-auth - authentication
-components - 'stateless' components
-container - stateful components
-store - redux
-styles
-user - user part of the app
+UI elements<br />
+admin - admin part of the app<br />
+assets - images, phone data<br />
+auth - authentication<br />
+components - 'stateless' components<br />
+container - stateful components<br />
+store - redux<br />
+styles<br />
+user - user part of the app<br />
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
