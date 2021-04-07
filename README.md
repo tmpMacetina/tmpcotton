@@ -5,7 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ### `App summary`
 
 Cotton is online fashion web store made with traditional React.js and Redux.<br/>
-Firebase authentication is used for authentication simulation. [Firebase auth info](https://firebase.google.com/docs/reference/rest/auth)
+[Firebase](https://firebase.google.com/docs/reference/rest/auth) authentication is used for authentication simulation.
 
 ### `Folder Structure`
 
