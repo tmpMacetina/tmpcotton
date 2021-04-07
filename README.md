@@ -2,11 +2,22 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 
-In the project directory, you can run:
+### `App summary`
 
-### `npm start`
+Dolor nostrud exercitation deserunt anim.Nulla labore cupidatat amet sunt nulla sint deserunt ipsum nisi mollit velit. Laboris deserunt Lorem fugiat ipsum commodo eiusmod sit esse nisi est ullamco commodo sint quis.
 
-Runs the app in the development mode.<br />
+### `Folder Structure`
+
+UI elements
+admin - admin part of the app
+assets - images, phone data
+auth - authentication
+components - 'stateless' components
+container - stateful components
+store - redux
+styles
+user - user part of the app
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />

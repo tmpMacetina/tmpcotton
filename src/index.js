@@ -1,15 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-
 import thunk from "redux-thunk";
 import { createStore, compose, applyMiddleware, combineReducers } from "redux";
-
-import App from "./App";
 import cartReducer from "./store/reducers/cartReducer";
 import authReducer from "./store/reducers/authReducer";
+import App from "./App";
+import "./index.css";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
