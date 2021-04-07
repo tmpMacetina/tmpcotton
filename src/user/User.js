@@ -20,7 +20,7 @@ import * as actions from "../store/actions/authActions";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 import "./User.scss";
 // TODO move notification part to Redux
-class Page extends Component {
+class UserPage extends Component {
   state = {
     notification: {
       showNotification: false,
@@ -106,4 +106,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Page);
+export default connect(mapStateToProps, mapDispatchToProps)(UserPage);

@@ -3,8 +3,8 @@ import "./ForThem.scss";
 import { NavLink } from "react-router-dom";
 import forHimImg from "../../../assets/forHimMin.jpg";
 import forHerImg from "../../../assets/forHerMin.jpg";
-// decorative two images with text between them
-// that have link to ForHim and ForHer pages, presentational component
+// presentational component, decorative two images with text between them
+// images have link to ForHim and ForHer pages
 const ForThem = () => {
   return (
     <div className="forthem ">

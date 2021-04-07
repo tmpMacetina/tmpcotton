@@ -11,6 +11,8 @@ import "../../styles/Spinner.scss";
 
 // best selling items shown on homepage
 // filters 1st 4 items that have bestselling set to true
+// TODO move modal and notification logic to redux
+
 class BestSelling extends Component {
   state = {
     modal: {

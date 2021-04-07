@@ -11,7 +11,7 @@ import "./ForHim.scss";
 import "../../styles/Spinner.scss";
 import "../../styles/Animations.scss";
 
-// check allproducts for more info
+// similar to allproducts
 class ForHim extends Component {
   state = {
     modal: {

@@ -7,7 +7,6 @@ import { createStore, compose, applyMiddleware, combineReducers } from "redux";
 import cartReducer from "./store/reducers/cartReducer";
 import authReducer from "./store/reducers/authReducer";
 import App from "./App";
-import "./index.css";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({

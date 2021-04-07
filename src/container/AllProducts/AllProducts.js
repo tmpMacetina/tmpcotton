@@ -36,14 +36,15 @@ class AllProducts extends Component {
     }
   };
 
-  // if items are not initialized does it,scrolls too top of page too
+  // if items are not initialized initialization is called
+  // scrolls too top of page too for better user xp
   componentDidMount() {
     window.scrollTo(0, 0);
     if (this.props.items.length === 0) this.props.initItems();
   }
 
   render() {
-    // when items init, set allItems to init items from Redux
+    // when items init, set allItems to inited  items from Redux
     let allItems = [];
     if (this.props.items.items) allItems = this.props.items.items;
 
@@ -163,7 +164,7 @@ class AllProducts extends Component {
         }
       }));
     };
-    // puts items into cards
+    // putting items into cards
     const toShowProducts = filteredItems.map(item => {
       return (
         <Card
@@ -179,6 +180,7 @@ class AllProducts extends Component {
         />
       );
     });
+    // JSX
     return (
       <div className="allproducts ">
         {this.state.modal.showModal ? (

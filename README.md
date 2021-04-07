@@ -4,7 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### `App summary`
 
-Cotton is online fashion web store made with traditional React.js and Redux. Firebase authentication is used for authentication simulation.
+Cotton is online fashion web store made with traditional React.js and Redux.<br/>
+Firebase authentication is used for authentication simulation. [Firebase auth info](https://firebase.google.com/docs/reference/rest/auth)
 
 ### `Folder Structure`
 
@@ -20,5 +21,6 @@ user - user part of the app<br />
 
 ### `TODO`
 
-Admin part - due to lack of proper back end<br/>
+Admin part - due to lack of proper back end admin part was omitted<br/>
 Previous orders - same as admin<br />
+Make code bit more readable<br/>

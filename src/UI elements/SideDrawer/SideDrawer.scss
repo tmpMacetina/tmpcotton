@@ -23,11 +23,11 @@
     height: 7rem;
     justify-content: center;
     margin: 0.6rem;
+    max-width: 100%;
     padding: 0;
     text-decoration: none;
     text-transform: uppercase;
     width: 30rem;
-    max-width: 100%;
     a {
       text-decoration: none;
     }
@@ -52,8 +52,6 @@
   }
   .sd-img {
     align-self: center;
-    height: min-content;
-    width: min-content;
     height: 20rem;
     width: 20rem;
   }
@@ -65,11 +63,11 @@
   display: none;
   height: 5rem;
   opacity: 0.8;
+  outline: none;
   position: fixed;
   right: 2rem;
   top: 2rem;
   width: 5rem;
-  outline: none;
   .bars {
     -ms-transform: translate(-50%, -50%);
     height: 3rem;
@@ -86,7 +84,6 @@
     width: 35%;
   }
 }
-
 @media (max-width: 1024px) {
   .sidedrawer {
     width: 55%;

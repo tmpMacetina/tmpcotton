@@ -24,7 +24,7 @@ class LogIn extends Component {
   };
 
   // auth error removed on reloading / page change
-  // the error is set to true on bad login info
+  // the error that is set to true on bad login info
   componentDidMount() {
     this.props.authErrorRemove();
   }

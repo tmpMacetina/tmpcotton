@@ -31,6 +31,7 @@ class SideDrawer extends Component {
 
     return ReactDOM.createPortal(
       <>
+        {/* burger button */}
         <button
           type="button"
           className="burgerbutton"
@@ -39,7 +40,7 @@ class SideDrawer extends Component {
         >
           <FaBars className="bars" />
         </button>
-
+        {/* side drawer */}
         <CSSTransition
           in={this.state.showSideDrawer}
           nodeRef={this.SDref}

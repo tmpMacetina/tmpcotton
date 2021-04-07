@@ -6,7 +6,9 @@ import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import Logo from "../../assets/Logo/Logo.png";
-// presentational header component that contains navigation, log in/log out changes based on auth
+// presentational header component that contains navigation
+// log in/log out changes based on auth
+// TODO rename to navigation...
 const Header = props => {
   const { auth, logOutHandler } = props;
   return (

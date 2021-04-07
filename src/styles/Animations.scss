@@ -20,6 +20,20 @@
   animation-duration: 1.2s;
   animation-fill-mode: both;
 }
+// types of animation
+.appear {
+  -webkit-animation-name: appear;
+  animation-name: appear;
+}
+.fade-in-left {
+  -webkit-animation-name: fade-in-left;
+  animation-name: fade-in-left;
+}
+.fade-in-right {
+  -webkit-animation-name: fade-in-right;
+  animation-name: fade-in-right;
+}
+
 // appear
 @-webkit-keyframes appear {
   0% {
@@ -78,16 +92,4 @@
     opacity: 1;
     transform: translateX(0);
   }
-}
-.appear {
-  -webkit-animation-name: appear;
-  animation-name: appear;
-}
-.fade-in-left {
-  -webkit-animation-name: fade-in-left;
-  animation-name: fade-in-left;
-}
-.fade-in-right {
-  -webkit-animation-name: fade-in-right;
-  animation-name: fade-in-right;
 }

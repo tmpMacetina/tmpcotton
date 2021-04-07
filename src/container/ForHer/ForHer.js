@@ -11,7 +11,7 @@ import "./ForHer.scss";
 import "../../styles/Spinner.scss";
 import "../../styles/Animations.scss";
 // similar to allproducts
-// TODO move modal and notification logic to redux
+
 class ForHer extends Component {
   state = {
     modal: {

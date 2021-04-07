@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import "./AuthStyles.scss";
-// does not work, only returns to log in on valid email input
+// does not work, only returns to log in on valid email submit
 class ResetPassoword extends Component {
   state = {
     email: {

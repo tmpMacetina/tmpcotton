@@ -56,7 +56,7 @@ const cartReducer = (state = initState, action) => {
       total: newTotal
     };
   }
-  // inside cart component
+  // inside cart/ cart item component
   if (action.type === ADD_QUANTITY) {
     const addedItem = state.items.items.find(item => item.id === action.id);
     addedItem.quantity += 1;
