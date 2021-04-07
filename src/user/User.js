@@ -17,7 +17,7 @@ import ResetPassword from "../auth/ResetPassword";
 import SignUp from "../auth/SignUp";
 import OrderSuccess from "../container/OrderSuccess/OrderSuccess";
 import * as actions from "../store/actions/authActions";
-import ErrorPage from "../error page/ErrorPage";
+import ErrorPage from "../components/ErrorPage/ErrorPage";
 import "./User.scss";
 // TODO move notification part to Redux
 class Page extends Component {
@@ -28,6 +28,7 @@ class Page extends Component {
     }
   };
 
+  // check if user is authenticated
   componentDidMount() {
     this.props.authCheck();
   }
@@ -55,6 +56,7 @@ class Page extends Component {
           setTimeout(() => closeNoti(), 1000);
         }, 1000);
     };
+    // log out for navigation
     const handleLogOut = () => {
       this.props.onLogOut();
       notify("You have logged out");
