@@ -11,14 +11,12 @@ const Header = props => {
   const { auth, logOutHandler } = props;
   return (
     <div className="header">
-      <img src={Logo} alt="logo" className="logo" />
+      <NavLink to="/" className="logo">
+        <img src={Logo} alt="logo" className="logo" />
+      </NavLink>
+
       <div className="left">
-        <NavLink
-          className="link"
-          activeClassName="active-class"
-          exact
-          to="/cotton"
-        >
+        <NavLink className="link" activeClassName="active-class" exact to="/">
           Home
         </NavLink>
         <NavLink className="link" activeClassName="active-class" to="/forhim">

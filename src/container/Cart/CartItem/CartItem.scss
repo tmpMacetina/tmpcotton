@@ -78,7 +78,7 @@
     transition: 0.3s;
     width: 12rem;
     &:hover {
-      transform: scale(1.05);
+      color: red;
     }
   }
 }
@@ -87,7 +87,6 @@
     width: 100%;
   }
 }
-//600px
 @media (max-width: 600px) {
   .cartitem {
     .right {

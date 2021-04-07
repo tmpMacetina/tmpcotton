@@ -20,13 +20,14 @@
     color: black;
     display: flex;
     font-size: 2.4rem;
-    height: 8rem;
+    height: 7rem;
     justify-content: center;
     margin: 0.6rem;
     padding: 0;
     text-decoration: none;
     text-transform: uppercase;
     width: 30rem;
+    max-width: 100%;
     a {
       text-decoration: none;
     }
@@ -53,6 +54,8 @@
     align-self: center;
     height: min-content;
     width: min-content;
+    height: 20rem;
+    width: 20rem;
   }
 }
 .burgerbutton {
@@ -66,6 +69,7 @@
   right: 2rem;
   top: 2rem;
   width: 5rem;
+  outline: none;
   .bars {
     -ms-transform: translate(-50%, -50%);
     height: 3rem;
@@ -82,15 +86,7 @@
     width: 35%;
   }
 }
-@media (max-height: 500px) {
-  .sidedrawer {
-    .sd-img {
-      align-self: center;
-      height: 10rem;
-      width: 10rem;
-    }
-  }
-}
+
 @media (max-width: 1024px) {
   .sidedrawer {
     width: 55%;
@@ -104,7 +100,21 @@
 }
 @media (max-width: 600px) {
   .sidedrawer {
-    width: 75%;
+    width: 60%;
+    .link {
+      width: 20rem;
+    }
+  }
+}
+@media (max-height: 450px) {
+  .sidedrawer {
+    width: 40%;
+    .link {
+      height: 5rem;
+    }
+    .sd-img {
+      display: none;
+    }
   }
 }
 .my-node-enter {

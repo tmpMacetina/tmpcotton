@@ -3,8 +3,10 @@
   flex-direction: row;
   grid-column: page-start/page-end;
   justify-content: space-between;
+  margin: 0 auto;
+  max-width: 135rem;
   min-height: 45rem;
-  padding: 2.5rem;
+  padding: 2rem 0;
   width: 100%;
   .lady-img {
     height: 45rem;
@@ -22,6 +24,9 @@
     justify-content: center;
     position: relative;
     width: 35rem;
+    a {
+      text-decoration: none;
+    }
   }
   .offer-text {
     font-size: 3.5rem;
@@ -30,24 +35,22 @@
     text-decoration: none;
   }
   .offer-button {
-    -moz-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s ease-in;
+    -ms-transition: all 0.4s ease-in;
+    -o-transition: all 0.4 ease-ins;
+    -webkit-transition: all 0.4s ease-in;
     align-self: center;
     border: double 1rem black;
     border-radius: 0.4rem;
+    color: black;
     cursor: pointer;
+    font-size: 2.4rem;
     font-weight: 500;
     height: min-content;
     padding: 1rem;
     text-align: center;
     text-decoration: none;
-    transition: 0.4s;
-    a {
-      color: black;
-      font-size: 2.6rem;
-      text-decoration: none;
-    }
+    transition: all 0.4s ease-in;
     &:hover {
       -moz-box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.75);
       -webkit-box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.75);
@@ -62,13 +65,14 @@
     margin-bottom: 0;
     min-height: 40rem;
     overflow: hidden;
-  }
-  .lady-img {
-    height: 40rem;
-    top: 5%;
-  }
-  .cotton-img {
-    display: none;
+    padding: 2.5rem;
+    .lady-img {
+      height: 40rem;
+      top: 5%;
+    }
+    .cotton-img {
+      display: none;
+    }
   }
 }
 @media (max-width: 600px) {
@@ -79,7 +83,6 @@
     padding-left: 0;
     padding-right: 2.5rem;
     width: 100%;
-
     .lady-img {
       height: 33rem;
       top: 5%;

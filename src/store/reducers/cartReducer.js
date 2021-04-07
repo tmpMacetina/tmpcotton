@@ -22,7 +22,7 @@ const initState = {
 const cartReducer = (state = initState, action) => {
   if (action.type === ADD_TO_CART) {
     const addedItem = state.items.items.find(item => item.id === action.id);
-    // check if the action id exists in the addedItems
+    // check if the id exists in the addedItems
     const itemExists = state.addedItems.find(item => action.id === item.id);
     if (itemExists) {
       addedItem.quantity += 1;
@@ -56,7 +56,7 @@ const cartReducer = (state = initState, action) => {
       total: newTotal
     };
   }
-  // inside cart
+  // inside cart component
   if (action.type === ADD_QUANTITY) {
     const addedItem = state.items.items.find(item => item.id === action.id);
     addedItem.quantity += 1;

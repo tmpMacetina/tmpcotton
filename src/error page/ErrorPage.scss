@@ -1,0 +1,13 @@
+.error_page {
+  align-items: center;
+  display: flex;
+  font-size: 5rem;
+  grid-column: page-start/page-end;
+  height: 100%;
+  justify-content: center;
+  left: 50%;
+  min-height: 60vh;
+  text-align: center;
+  top: 50%;
+  width: 100%;
+}

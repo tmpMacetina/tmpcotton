@@ -4,8 +4,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/cartActions";
-import "./Cart.scss";
 import CartItem from "./CartItem/CartItem";
+import "./Cart.scss";
 
 class Cart extends Component {
   render() {
@@ -45,7 +45,17 @@ class Cart extends Component {
       <div className="cart">
         <div className="title">CART</div>
         {itemsToAdd}
-        <div className="total">TOTAL: {this.props.total} &euro;</div>
+        <div className="total">
+          <p className="requirement">
+            {loggedIn ? null : "you must be logged in to order"}
+          </p>
+          <p className="requirement">
+            {this.props.addedItems.length === 0
+              ? "cart can not be empty"
+              : null}
+          </p>
+          TOTAL: {this.props.total} &euro;
+        </div>
 
         <button
           type="button"
@@ -55,12 +65,6 @@ class Cart extends Component {
         >
           ORDER NOW
         </button>
-        <p className="requirement">
-          {loggedIn ? null : "you must be logged in to order"}
-        </p>
-        <p className="requirement">
-          {this.props.addedItems.length === 0 ? "cart can not be empty" : null}
-        </p>
       </div>
     );
   }

@@ -11,6 +11,7 @@ import "../../styles/Spinner.scss";
 import "../../styles/Animations.scss";
 // page with all products
 // TODO move modal and notification logic to redux
+// TODO make this sphagetti code more readable
 // ( TODO for ForHim and ForHer is same )
 class AllProducts extends Component {
   state = {

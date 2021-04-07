@@ -13,12 +13,13 @@ import ForHer from "../container/ForHer/ForHer";
 import AllProducts from "../container/AllProducts/AllProducts";
 import Cart from "../container/Cart/Cart";
 import LogIn from "../auth/LogIn";
+import ResetPassword from "../auth/ResetPassword";
 import SignUp from "../auth/SignUp";
 import OrderSuccess from "../container/OrderSuccess/OrderSuccess";
 import * as actions from "../store/actions/authActions";
-import ErrorPage from "./ErrorPage";
-import "./Page.scss";
-
+import ErrorPage from "../error page/ErrorPage";
+import "./User.scss";
+// TODO move notification part to Redux
 class Page extends Component {
   state = {
     notification: {
@@ -32,6 +33,7 @@ class Page extends Component {
   }
 
   render() {
+    // notification that user logged out
     const openNoti = msg => {
       this.setState({
         notification: {
@@ -58,27 +60,28 @@ class Page extends Component {
       notify("You have logged out");
     };
     return (
-      <div className="page">
+      <div className="user_page">
         <Header
           auth={!!(this.props.token || this.props.userId)}
           logOutHandler={handleLogOut}
         />
-        <SideDrawer />
-
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/tmpcotton" exact component={Home} />
+          <Route path="/cotton" exact component={Home} />
           <Route path="/forher" exact component={ForHer} />
           <Route path="/forhim" exact component={ForHim} />
           <Route path="/login" exact component={LogIn} />
+          <Route path="/passwordreset" exact component={ResetPassword} />
           <Route path="/signup" component={SignUp} />
           <Route path="/cart" component={Cart} />
           <Route path="/allproducts" component={AllProducts} />
           <Route path="/ordersuccess" component={OrderSuccess} />
           <Route path="*" component={ErrorPage} />
         </Switch>
-        <Footer />
 
+        <Footer />
+        <SideDrawer />
         {this.state.notification.showNotification ? (
           <Notification msg={this.state.notification.notificationMsg} />
         ) : null}
@@ -86,7 +89,7 @@ class Page extends Component {
     );
   }
 }
-
+// data is sent to header component to switch between log in / log out
 const mapStateToProps = state => {
   return {
     token: state.auth.token,

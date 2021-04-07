@@ -39,7 +39,7 @@
     flex-direction: column;
     font-size: 2rem;
     height: 90%;
-    padding: 1rem;
+    padding: 2rem;
     position: relative;
     top: 5%;
     width: 40%;
@@ -105,8 +105,8 @@
 @media (max-width: 1024px) {
   .modal {
     .modal-img {
-      height: 25rem;
-      width: 25rem;
+      height: 23rem;
+      width: 23rem;
     }
   }
 }
@@ -114,7 +114,7 @@
   .modal {
     align-content: center;
     flex-direction: column;
-    height: 80%;
+    height: 75%;
     justify-content: center;
     .img_container {
       height: 45rem;

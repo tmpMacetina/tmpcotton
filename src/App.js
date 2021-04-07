@@ -1,9 +1,10 @@
 import React from "react";
-import Page from "./page/Page";
+import User from "./user/User";
 import "./App.scss";
-//  due to lack of proper backend Admin part was not made
+// due to lack of proper backend admin part was not made
+// you can read more about it in Admin.js
 const App = () => {
-  return <Page />;
+  return <User />;
   // <Admin />
 };
 

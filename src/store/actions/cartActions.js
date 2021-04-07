@@ -68,7 +68,7 @@ export const fetchClothesErr = () => {
 export const initItems = () => {
   return dispatch => {
     axios
-      .get("https://api.jsonbin.io/b/5fefd15e14be547060189183/2") // "https://api.jsonbin.io/b/5fefd15e14be547060189183"
+      .get("https://api.jsonbin.io/b/5fefd15e14be547060189183/2")
       .then(response => {
         dispatch(setClothes(response.data));
       })

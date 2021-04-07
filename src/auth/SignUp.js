@@ -5,10 +5,11 @@ import { NavLink, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../store/actions/authActions";
 import Countries from "../assets/phonesData.json";
-import "./SignUp.scss";
+import "./AuthStyles.scss";
+// Similar to Log In
 // Firebase Authentcation is used to simulate authentication
 // https://firebase.google.com/docs/reference/rest/auth for more info
-// TODO split into 2 parts,add spinner while waiting for an answer
+// TODO split into 2 parts, add spinner while waiting for an answer
 class SignUp extends Component {
   state = {
     email: {
@@ -27,8 +28,8 @@ class SignUp extends Component {
       touched: false
     },
     country: {
-      value: "Afghanistan",
-      code: "+93"
+      value: "Serbia",
+      code: "+381"
     },
     phone: {
       value: "",
@@ -264,52 +265,52 @@ class SignUp extends Component {
       this.state.phone.valid;
 
     return (
-      <form className="signup-form " onSubmit={handleSubmit}>
+      <form className="auth-form " onSubmit={handleSubmit}>
         <h1 className="title">Sign up</h1>
-        <div className="form-item">
+        <div className="item">
           <label htmlFor="name" className="input-title">
             Name:
             <input
               required
-              className="signup-input"
+              className="input"
               type="text"
               id="name"
               value={this.state.name.value}
               placeholder="full name"
               onChange={handleChangeName}
             />
-            <p className="input-error-text">
+            <p className="input-error_text">
               {!this.state.name.valid && this.state.name.touched
                 ? "Enter valid name"
                 : null}
             </p>
           </label>
         </div>
-        {/* ==========               put label for all                    ======== */}
-        <div className="form-item">
+
+        <div className="item">
           <label htmlFor="email" className="input-title">
             E-mail:
             <input
-              className="signup-input"
+              className="input"
               type="email"
               id="email"
               required
               value={this.state.email.value}
-              placeholder="example@mail.com"
+              placeholder="your@mail.com"
               onChange={handleChangeEmail}
             />
-            <p className="input-error-text">
+            <p className="input-error_text">
               {!this.state.email.valid && this.state.email.touched
                 ? "Enter valid e-mail"
                 : null}
             </p>
           </label>
         </div>
-        <div className="form-item">
+        <div className="item">
           <label htmlFor="password" className="input-title">
             Password:
             <input
-              className="signup-input"
+              className="input"
               placeholder="password"
               type="password"
               id="password"
@@ -317,18 +318,18 @@ class SignUp extends Component {
               required
               onChange={handleChangePassword}
             />
-            <p className="input-error-text">
+            <p className="input-error_text">
               {!this.state.password.valid && this.state.password.touched
                 ? "Must have 8 characters"
                 : null}
             </p>
           </label>
         </div>
-        <div className="form-item">
+        <div className="item">
           <label htmlFor="rpassword" className="input-title">
             Repeat password:
             <input
-              className="signup-input"
+              className="input"
               placeholder="repeat password"
               type="password"
               id="rpassword"
@@ -336,7 +337,7 @@ class SignUp extends Component {
               value={this.state.passwordRepeat.value}
               onChange={handleChangePasswordRepeated}
             />
-            <p className="input-error-text">
+            <p className="input-error_text">
               {!this.state.passwordRepeat.valid &&
               this.state.passwordRepeat.touched
                 ? "Passwords do not match"
@@ -344,19 +345,20 @@ class SignUp extends Component {
             </p>
           </label>
         </div>
-        <div className="form-item">
+        <div className="item">
           <label htmlFor="country" className="input-title">
             Choose your country:
             <select
+              defaultValue="Serbia"
               id="country"
               onChange={handleChangeCountry}
-              className="country-selector"
+              className="country_selector"
             >
               {selectCountryOptions}
             </select>
           </label>
         </div>
-        <div className="form-item">
+        <div className="item">
           <label htmlFor="phone" className="input-title">
             Phone number:
             <div className="phone">
@@ -371,12 +373,11 @@ class SignUp extends Component {
                 type="text"
                 id="phone"
                 value={this.state.phone.value}
-                placeholder="your phone number"
                 onChange={handleChangePhone}
                 required
               />
             </div>
-            <p className="input-error-text">
+            <p className="input-error_text">
               {!this.state.phone.valid && this.state.phone.touched
                 ? "Enter valid phone number"
                 : null}
@@ -386,7 +387,7 @@ class SignUp extends Component {
 
         <button
           type="submit"
-          className="signup-button"
+          className="auth-button"
           disabled={!buttonEnable}
           onClick={() =>
             handleSignUp(this.state.email.value, this.state.password.value)
@@ -395,17 +396,15 @@ class SignUp extends Component {
           Sign up
         </button>
 
-        <NavLink className="to-login" to="/login">
+        <NavLink className="auth-link" to="/login">
           Already have an account? Click here to log in!
         </NavLink>
 
         {this.props.error ? (
-          <div className="signup-error">User already exits or data error</div>
+          <div className="auth-error">Unknown error or user already exists</div>
         ) : null}
         {/* on successful login,redirect to home page */}
-        {this.props.token && this.props.userId ? (
-          <Redirect to="/cotton" />
-        ) : null}
+        {this.props.token && this.props.userId ? <Redirect to="/" /> : null}
       </form>
     );
   }

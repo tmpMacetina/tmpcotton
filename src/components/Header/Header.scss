@@ -1,9 +1,9 @@
 .header {
   align-items: center;
-  border-bottom: 1.5rem double;
+  border-bottom: 1.4rem double;
   display: flex;
   grid-column: page-start/page-end;
-  height: 16vh;
+  height: 10rem;
   justify-content: space-between;
   padding: 2.5rem;
   .left {
@@ -13,7 +13,7 @@
     display: flex;
   }
   .logo {
-    height: 13vh;
+    height: 9rem;
     left: 50%;
     position: absolute;
     transform: translateX(-50%);
@@ -80,14 +80,6 @@
     }
     .toggle-button {
       display: block;
-    }
-  }
-}
-@media (max-width: 600px) {
-  .header {
-    height: 12vh;
-    .logo {
-      height: 10vh;
     }
   }
 }

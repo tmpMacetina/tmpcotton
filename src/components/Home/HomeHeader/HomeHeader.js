@@ -4,7 +4,7 @@ import ladyImg from "../../../assets/lady.png";
 import cottonImg from "../../../assets/cotton-min.png";
 import "./HomeHeader.scss";
 import "../../../styles/Animations.scss";
-// presentational component, something like a header just for home page,not a good name I know...
+// presentational component, with images and link to all products, not a good name I know...
 const HeaderImage = () => {
   return (
     <div className="homeheader">
@@ -15,14 +15,13 @@ const HeaderImage = () => {
       />
       <div className="offer animated  fade-in-left">
         <div className="offer-text">We offer the finest COTTON products</div>
-        <div className="offer-button">
-          <NavLink
-            className=" animated-small-delay fade-in-left"
-            to="/allproducts"
-          >
-            Click here to see our offer
-          </NavLink>
-        </div>
+
+        <NavLink
+          className=" animated-small-delay fade-in-left"
+          to="/allproducts"
+        >
+          <div className="offer-button">Click here to see our offer </div>
+        </NavLink>
       </div>
 
       <img

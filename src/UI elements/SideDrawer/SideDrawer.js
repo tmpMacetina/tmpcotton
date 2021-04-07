@@ -35,6 +35,7 @@ class SideDrawer extends Component {
           type="button"
           className="burgerbutton"
           onClick={toggleSideDrawer}
+          aria-label="burger button"
         >
           <FaBars className="bars" />
         </button>
@@ -66,7 +67,7 @@ class SideDrawer extends Component {
                   activeClassName="active-class"
                   className="link"
                   exact
-                  to="/cotton"
+                  to="/"
                 >
                   Home
                 </NavLink>

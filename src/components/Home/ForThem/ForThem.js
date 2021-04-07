@@ -8,7 +8,7 @@ import forHerImg from "../../../assets/forHerMin.jpg";
 const ForThem = () => {
   return (
     <div className="forthem ">
-      <NavLink to="forhim" className="container fade-in-left animated">
+      <NavLink to="/forhim" className="container fade-in-left animated">
         <div className="floating-text ">
           For <br /> him
         </div>
@@ -19,9 +19,9 @@ const ForThem = () => {
         clothes <br />
         for
         <br /> him &amp; her
-        <br />a click away
+        <br />1 click away
       </div>
-      <NavLink to="forher" className="container fade-in-right animated">
+      <NavLink to="/forher" className="container fade-in-right animated">
         <div className="floating-text ">
           For <br /> her
         </div>
